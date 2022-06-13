@@ -1,0 +1,175 @@
+fileFormatVersion: 2
+guid: 6a3f3bc2d7e85fd43bb64fee22303e36
+timeCreated: 1505448533
+licenseType: Free
+ModelImporter:
+  serializedVersion: 21
+  fileIDToRecycleName:
+    100000: FloorTile8x009
+    100002: //RootNode
+    100004: Seperator003
+    100006: Seperator004
+    100008: Seperator005
+    100010: Seperator006
+    100012: Seperator007
+    100014: Seperator008
+    100016: Seperator009
+    100018: Seperator010
+    100020: Seperator011
+    100022: Seperator012
+    100024: Seperator013
+    100026: Seperator014
+    100028: Seperator015
+    100030: Seperator016
+    100032: Seperator017
+    100034: Seperator018
+    100036: CeilingTile8x009
+    400000: FloorTile8x009
+    400002: //RootNode
+    400004: Seperator003
+    400006: Seperator004
+    400008: Seperator005
+    400010: Seperator006
+    400012: Seperator007
+    400014: Seperator008
+    400016: Seperator009
+    400018: Seperator010
+    400020: Seperator011
+    400022: Seperator012
+    400024: Seperator013
+    400026: Seperator014
+    400028: Seperator015
+    400030: Seperator016
+    400032: Seperator017
+    400034: Seperator018
+    400036: CeilingTile8x009
+    2300000: FloorTile8x009
+    2300002: Seperator003
+    2300004: Seperator004
+    2300006: Seperator005
+    2300008: Seperator006
+    2300010: Seperator007
+    2300012: Seperator008
+    2300014: Seperator009
+    2300016: Seperator010
+    2300018: Seperator011
+    2300020: Seperator012
+    2300022: Seperator013
+    2300024: Seperator014
+    2300026: Seperator015
+    2300028: Seperator016
+    2300030: Seperator017
+    2300032: Seperator018
+    2300034: CeilingTile8x009
+    3300000: FloorTile8x009
+    3300002: Seperator003
+    3300004: Seperator004
+    3300006: Seperator005
+    3300008: Seperator006
+    3300010: Seperator007
+    3300012: Seperator008
+    3300014: Seperator009
+    3300016: Seperator010
+    3300018: Seperator011
+    3300020: Seperator012
+    3300022: Seperator013
+    3300024: Seperator014
+    3300026: Seperator015
+    3300028: Seperator016
+    3300030: Seperator017
+    3300032: Seperator018
+    3300034: CeilingTile8x009
+    4300000: Seperator003
+    4300002: FloorTile8x009
+    4300004: Seperator004
+    4300006: Seperator005
+    4300008: Seperator006
+    4300010: Seperator007
+    4300012: Seperator008
+    4300014: Seperator009
+    4300016: Seperator010
+    4300018: Seperator011
+    4300020: Seperator012
+    4300022: Seperator013
+    4300024: Seperator014
+    4300026: Seperator015
+    4300028: Seperator016
+    4300030: Seperator017
+    4300032: Seperator018
+    4300034: CeilingTile8x009
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
