@@ -44,11 +44,11 @@ public class HeadBob : MonoBehaviour
                 distance %= _characterSignals.StrideLength;
 
                 // Evaluate the current camera bob.
-                var magnitude = _characterSignals.IsRunning.Value ? runBobMagnitude : walkBobMagnitude;
-                var deltaPosition = magnitude * bobCurve.Evaluate(distance / _characterSignals.StrideLength) *
-                                    Vector3.up;
+                //var magnitude = _characterSignals.IsRunning.Value ? runBobMagnitude : walkBobMagnitude;
+                //var deltaPosition = magnitude * bobCurve.Evaluate(distance / _characterSignals.StrideLength) *
+                //                    Vector3.up;
 
-                _camera.transform.localPosition = _initialCameraPosition + deltaPosition;
+                //_camera.transform.localPosition = _initialCameraPosition + deltaPosition;
             }).AddTo(this);
         }
     }

@@ -13,12 +13,6 @@ public class InputActionBasedFirstPersonControllerInput : FirstPersonControllerI
     private IObservable<Vector2> _look;
     public override IObservable<Vector2> Look => _look;
 
-    private ReadOnlyReactiveProperty<bool> _run;
-    public override ReadOnlyReactiveProperty<bool> Run => _run;
-
-    private Subject<Unit> _jump;
-    public override IObservable<Unit> Jump => _jump;
-
     [Header("Look Properties")]
     [SerializeField] private float lookSmoothingFactor = 14.0f;
 
@@ -59,14 +53,5 @@ public class InputActionBasedFirstPersonControllerInput : FirstPersonControllerI
                 return smoothLookValue;
             });
 
-        _run = this.UpdateAsObservable()
-            .Select(_ => _controls.Game.Run.ReadValueAsObject() != null)
-            .ToReadOnlyReactiveProperty();
-
-        _jump = new Subject<Unit>().AddTo(this);
-        _controls.Game.Jump.performed += context =>
-        {
-            _jump.OnNext(Unit.Default);
-        };
     }
 }

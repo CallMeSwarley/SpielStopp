@@ -12,16 +12,7 @@ public class FirstPersonController : MonoBehaviour, ICharacterSignals
 {
 
     public IObservable<Vector3> Moved => _moved;
-    private Subject<Vector3> _moved;
-
-    public ReactiveProperty<bool> IsRunning => _isRunning;
-    private ReactiveProperty<bool> _isRunning;
-
-    public IObservable<Unit> Landed => _landed;
-    private Subject<Unit> _landed;
-
-    public IObservable<Unit> Jumped => _jumped;
-    private Subject<Unit> _jumped;
+    private Subject<Vector3> _moved;  
 
     public IObservable<Unit> Stepped => _stepped;
     private Subject<Unit> _stepped;
@@ -33,9 +24,7 @@ public class FirstPersonController : MonoBehaviour, ICharacterSignals
 
     [Header("Movement Options")]
     [SerializeField] private float moveSpeed = 5f;
-    [SerializeField] private float runSpeed = 10f;
     [SerializeField] private float gravity = 5f;
-    [SerializeField] private float jumpSpeed = 10f;
     [SerializeField] private float strideLength = 2.5f;
     public float StrideLength => strideLength;
 
@@ -43,7 +32,8 @@ public class FirstPersonController : MonoBehaviour, ICharacterSignals
     [Range(-90, 0)] [SerializeField] private float minViewAngle = -60f;
     [Range(0, 90)] [SerializeField] private float maxViewAngle = 60f;
 
-    private void Awake() {
+    private void Awake()
+    {
         _characterController = GetComponent<CharacterController>();
         _camera = GetComponentInChildren<Camera>();
 
@@ -61,75 +51,34 @@ public class FirstPersonController : MonoBehaviour, ICharacterSignals
     {
         this.HandleLocomotion();
         this.Look();
-        
 
-        _isRunning = new ReactiveProperty<bool>(false);
+
+
         _moved = new Subject<Vector3>().AddTo(this);
-        _jumped = new Subject<Unit>().AddTo(this);
-        _landed = new Subject<Unit>().AddTo(this);
         _stepped = new Subject<Unit>().AddTo(this);
     }
 
-    private void HandleLocomotion() {
-        //Start of grounded
-        _characterController.Move(-gravity * transform.up);
-        
-
-        var jumpLatch = LatchObservables.Latch(this.UpdateAsObservable(), firstPersonControllerInput.Jump, false);
-
-
+    private void HandleLocomotion()
+    {
         //Movement
         _ = firstPersonControllerInput.Move
-            .Zip(jumpLatch, (m, j) => new MoveInputData(m, j))
-            .Where(moveInputData => moveInputData.jump ||
-                                    moveInputData.move != Vector2.zero ||
-                                   _characterController.isGrounded == false)
             .Subscribe(i =>
             {
-                var wasGrounded = _characterController.isGrounded;
 
-                //vertical movement
-                var verticalSpeed = 0f;
 
-                //Determine vertical movement
-                //on the ground and want to jump
-                if (i.jump && wasGrounded)
-                {
-                    verticalSpeed = jumpSpeed;
-                    //_jumped.OnNext(Unit.Default);
-                }
-                //not grounded -> gravity
-                else if (!wasGrounded)
-                {
-                    verticalSpeed = _characterController.velocity.y + (Physics.gravity.y * Time.deltaTime * 3.0f);
-                }
-                else
-                //on the ground. Restore base state
-                {
-                    verticalSpeed = -Math.Abs(gravity);
-                }
 
                 //horizontal movement
                 // == if Run runspeed else walkspeed
-                var currentSpeed = firstPersonControllerInput.Run.Value ? runSpeed : moveSpeed;
-                var horizontalVelocity = i.move * currentSpeed;
+                var horizontalVelocity = i * moveSpeed;
 
                 //combine horizontal and vertical movement
-                var characterSpeed = transform.TransformVector(new Vector3(horizontalVelocity.x, verticalSpeed, horizontalVelocity.y));
+                var characterSpeed = transform.TransformVector(new Vector3(horizontalVelocity.x, -gravity, horizontalVelocity.y));
 
                 //apply movement
                 var distance = characterSpeed * Time.deltaTime;
                 _characterController.Move(distance);
 
-                var tempIsRunning = false;
-                if (wasGrounded && _characterController.isGrounded)
-                { 
-                    _moved.OnNext(_characterController.velocity * Time.deltaTime);
-                    if (_characterController.velocity.magnitude > 0)
-                    {
-                        tempIsRunning = firstPersonControllerInput.Run.Value;
-                    }
-                }
+
 
                 //if (!wasGrounded && _characterController.isGrounded) {
                 //    _landed.OnNext(Unit.Default);
@@ -137,9 +86,10 @@ public class FirstPersonController : MonoBehaviour, ICharacterSignals
             }).AddTo(this);
     }
 
-   
 
-    private void Look() {
+
+    private void Look()
+    {
         firstPersonControllerInput.Look.Where(v => v != Vector2.zero).
             Subscribe(inputLook =>
             {
@@ -161,13 +111,4 @@ public class FirstPersonController : MonoBehaviour, ICharacterSignals
             }).AddTo(this);
     }
 
-    public struct MoveInputData {
-        public readonly Vector2 move;
-        public readonly bool jump;
-
-        public MoveInputData(Vector2 move, bool jump) {
-            this.move = move;
-            this.jump = jump;
-        }
-    }
 }

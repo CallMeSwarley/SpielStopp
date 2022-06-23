@@ -44,24 +44,6 @@ public partial class @FirstPersonInputAction : IInputActionCollection2, IDisposa
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
-                },
-                {
-                    ""name"": ""Run"",
-                    ""type"": ""Button"",
-                    ""id"": ""c0eb1026-49df-4775-b3d1-044d3c69abcb"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""Jump"",
-                    ""type"": ""Button"",
-                    ""id"": ""66dd4cf9-a3e1-4bdb-99bf-0d3f44265705"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -262,50 +244,6 @@ public partial class @FirstPersonInputAction : IInputActionCollection2, IDisposa
                     ""action"": ""Look"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""da88a174-abe4-44a2-b80c-8ee7bc3619ba"",
-                    ""path"": ""<Keyboard>/leftShift"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Keyboard and Mouse"",
-                    ""action"": ""Run"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""401d85d5-3ac9-49ce-91c6-d52c2832a5d6"",
-                    ""path"": ""<Gamepad>/buttonEast"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Gamepad"",
-                    ""action"": ""Run"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""c709bd09-7ae2-4fc7-aa9d-a9e12afbea66"",
-                    ""path"": ""<Keyboard>/space"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Keyboard and Mouse"",
-                    ""action"": ""Jump"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""3d8beea1-f3bb-4324-a7e9-d9e3f64b0ab1"",
-                    ""path"": ""<Gamepad>/buttonSouth"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Gamepad"",
-                    ""action"": ""Jump"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -344,8 +282,6 @@ public partial class @FirstPersonInputAction : IInputActionCollection2, IDisposa
         m_Game = asset.FindActionMap("Game", throwIfNotFound: true);
         m_Game_Move = m_Game.FindAction("Move", throwIfNotFound: true);
         m_Game_Look = m_Game.FindAction("Look", throwIfNotFound: true);
-        m_Game_Run = m_Game.FindAction("Run", throwIfNotFound: true);
-        m_Game_Jump = m_Game.FindAction("Jump", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -407,16 +343,12 @@ public partial class @FirstPersonInputAction : IInputActionCollection2, IDisposa
     private IGameActions m_GameActionsCallbackInterface;
     private readonly InputAction m_Game_Move;
     private readonly InputAction m_Game_Look;
-    private readonly InputAction m_Game_Run;
-    private readonly InputAction m_Game_Jump;
     public struct GameActions
     {
         private @FirstPersonInputAction m_Wrapper;
         public GameActions(@FirstPersonInputAction wrapper) { m_Wrapper = wrapper; }
         public InputAction @Move => m_Wrapper.m_Game_Move;
         public InputAction @Look => m_Wrapper.m_Game_Look;
-        public InputAction @Run => m_Wrapper.m_Game_Run;
-        public InputAction @Jump => m_Wrapper.m_Game_Jump;
         public InputActionMap Get() { return m_Wrapper.m_Game; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -432,12 +364,6 @@ public partial class @FirstPersonInputAction : IInputActionCollection2, IDisposa
                 @Look.started -= m_Wrapper.m_GameActionsCallbackInterface.OnLook;
                 @Look.performed -= m_Wrapper.m_GameActionsCallbackInterface.OnLook;
                 @Look.canceled -= m_Wrapper.m_GameActionsCallbackInterface.OnLook;
-                @Run.started -= m_Wrapper.m_GameActionsCallbackInterface.OnRun;
-                @Run.performed -= m_Wrapper.m_GameActionsCallbackInterface.OnRun;
-                @Run.canceled -= m_Wrapper.m_GameActionsCallbackInterface.OnRun;
-                @Jump.started -= m_Wrapper.m_GameActionsCallbackInterface.OnJump;
-                @Jump.performed -= m_Wrapper.m_GameActionsCallbackInterface.OnJump;
-                @Jump.canceled -= m_Wrapper.m_GameActionsCallbackInterface.OnJump;
             }
             m_Wrapper.m_GameActionsCallbackInterface = instance;
             if (instance != null)
@@ -448,12 +374,6 @@ public partial class @FirstPersonInputAction : IInputActionCollection2, IDisposa
                 @Look.started += instance.OnLook;
                 @Look.performed += instance.OnLook;
                 @Look.canceled += instance.OnLook;
-                @Run.started += instance.OnRun;
-                @Run.performed += instance.OnRun;
-                @Run.canceled += instance.OnRun;
-                @Jump.started += instance.OnJump;
-                @Jump.performed += instance.OnJump;
-                @Jump.canceled += instance.OnJump;
             }
         }
     }
@@ -480,7 +400,5 @@ public partial class @FirstPersonInputAction : IInputActionCollection2, IDisposa
     {
         void OnMove(InputAction.CallbackContext context);
         void OnLook(InputAction.CallbackContext context);
-        void OnRun(InputAction.CallbackContext context);
-        void OnJump(InputAction.CallbackContext context);
     }
 }
