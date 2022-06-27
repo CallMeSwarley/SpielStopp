@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using UnityEngine.AI;
 
 
-public class OnClickFollow : MonoBehaviour
+public class OnClickFollow : MonoBehaviour, Interactable
 {
     //Transform that NPC has to follow
     public Transform transformToFollow;
@@ -15,6 +15,7 @@ public class OnClickFollow : MonoBehaviour
     Renderer myRenderer;
     private bool followPlayer = false; // changes when you click on the npc and rechanges if you click again
     Color originalColor;
+    bool interactable = true;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,10 +24,14 @@ public class OnClickFollow : MonoBehaviour
         npc_material = myRenderer.material;
         originalColor = npc_material.GetColor("_Color");
     }
-
-    void OnMouseOver()
+    // Allows interactables to decide if they are currently interactable
+    public bool IsCurrentlyInteractable()
     {
-        npc_material.SetColor("_Color", Color.red);//select mode
+        return interactable;
+    }
+    // What happens when the player interacts with this interactable?
+    public void Interact()
+    {
         if (Input.GetMouseButton(0) && followPlayer)
         {
             followPlayer = false;
@@ -37,10 +42,13 @@ public class OnClickFollow : MonoBehaviour
             followPlayer = true;
             npc_material.SetColor("_Color", Color.blue);//followmode
         }
-
-        Debug.Log("Mouse over NPC");
+        else
+        {
+            npc_material.SetColor("_Color", Color.red);//select mode
+        }
     }
-    void OnMouseExit() {
+    public void endInteract()
+    {
         npc_material.SetColor("_Color", originalColor);//exit select mode
     }
 
@@ -52,9 +60,6 @@ public class OnClickFollow : MonoBehaviour
             npc_material.SetColor("_Color", Color.blue);
             agent.destination = transformToFollow.position;
         }
-        else
-        {
-            npc_material.SetColor("_Color", originalColor);
-        }
+
     }
 }
