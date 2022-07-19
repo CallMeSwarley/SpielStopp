@@ -1,0 +1,33 @@
+{
+    "scope": "ProductData",
+    "tables": {
+        "GameData": {
+            "fields": {
+                "Genre1": {
+                    "isArray": false,
+                    "type": "string",
+                    "typeArg": null
+                },
+                "Genre2": {
+                    "isArray": false,
+                    "type": "string",
+                    "typeArg": null
+                },
+                "Rating": {
+                    "isArray": false,
+                    "type": "int",
+                    "typeArg": null
+                },
+                "Trend": {
+                    "isArray": false,
+                    "type": "int",
+                    "typeArg": null
+                }
+            },
+            "key": {
+                "type": "string",
+                "typeArg": null
+            }
+        }
+    }
+}
