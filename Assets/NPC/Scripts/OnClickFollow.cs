@@ -7,6 +7,7 @@ using UnityEngine.AI;
 
 public class OnClickFollow : MonoBehaviour, Interactable
 {
+    public NPC_master npc_master;
     //Transform that NPC has to follow
     public Transform transformToFollow;
     //NavMesh Agent variable
@@ -35,12 +36,21 @@ public class OnClickFollow : MonoBehaviour, Interactable
         if (Input.GetMouseButton(0) && followPlayer)
         {
             followPlayer = false;
+            npc_master.receivesHelp = false;
+            if (npc_master.hasWish && (int)npc_master.currentState == 0 && npc_master.receivesHelp)
+            {
+                npc_master.receivesHelp = false;
+            }
             npc_material.SetColor("_Color", originalColor);//"standby"-mode
         }
         else if (Input.GetMouseButton(0) && !followPlayer)
         {
             followPlayer = true;
             npc_material.SetColor("_Color", Color.blue);//followmode
+            if (npc_master.hasWish && (int) npc_master.currentState == 0 && !npc_master.receivesHelp)//wenn er was sucht dann hilft man ihm sonst keine hilfe dadurch. wunscherfüllung muss im npc master passieren
+            {
+                npc_master.receivesHelp = true;
+            }
         }
         else
         {

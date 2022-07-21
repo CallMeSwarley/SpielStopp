@@ -6,15 +6,18 @@ using UnityEngine.UI;
 
 public class CustomerSatisfaction : MonoBehaviour
 {
-    public float satisfactionLvl;
-    public float maxSatisfaction;
+    public NPC_master npc_master;
 
     public GameObject satisfactionBarUI;
     public Slider slider;
+
+    float satisfactionLvl;
+    float maxSatisfaction;
     // Start is called before the first frame update
     void Start()
     {
-        satisfactionLvl = maxSatisfaction;
+        maxSatisfaction= npc_master.maxSatisfaction;
+        satisfactionLvl = npc_master.maxSatisfaction;
         slider.value = calcSatisfaction();
         satisfactionBarUI.SetActive(true);
     }
@@ -23,13 +26,13 @@ public class CustomerSatisfaction : MonoBehaviour
     void Update()
     {
         slider.value = calcSatisfaction();
-        if (satisfactionLvl <= 0)
+        if (npc_master.satisfactionLvl <= 0)
         {
             Destroy(gameObject);//TODO make him leave the shop & playerrating goes down
         }
-        if (satisfactionLvl > maxSatisfaction)
+        if (npc_master.satisfactionLvl > maxSatisfaction)
         {
-            satisfactionLvl = maxSatisfaction;
+            npc_master.satisfactionLvl = maxSatisfaction;
         }
     }
 
@@ -37,6 +40,6 @@ public class CustomerSatisfaction : MonoBehaviour
     {
         //TODO add more vars to calculate the satisfaction
         //TODO if he has wish, satisfaction goes down fluently
-        return satisfactionLvl / maxSatisfaction; //returns value between 0 and 1 vgl. Slider in Unity
+        return npc_master.satisfactionLvl / maxSatisfaction; //returns value between 0 and 1 vgl. Slider in Unity
     }
 }
