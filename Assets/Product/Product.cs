@@ -1,30 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
-
-public class Product : MonoBehaviour
+[System.Serializable]
+public class Product
 {
-    string Name;
-    Genre genre1;
-    Genre genre2;
-    int id;
-    int rating;
-    int trend;
+    //these variables are case sensitive and must match the strings "firstName" and "lastName" in the JSON.
+    public string title;
+    public string genre1;
+    public string genre2;
+    public int rating;
+    public int trend;
 
-    
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    public void setValues(string nName, Genre nGenre1, Genre nGenre2, int nid, int nrating, int ntrend) {
-        Name = nName;
-        genre1 = nGenre1;
-        genre2 = nGenre2;
-        id = nid;
-        rating = nrating;
-        trend = ntrend;
-    }
 }
+
+
 
