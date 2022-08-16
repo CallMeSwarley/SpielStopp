@@ -10,9 +10,12 @@ public class CustomerSatisfaction : MonoBehaviour
 
     public GameObject satisfactionBarUI;
     public Slider slider;
+    public Display_UI display_UI;
+    public Image fill;
 
     float satisfactionLvl;
     float maxSatisfaction;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -26,9 +29,12 @@ public class CustomerSatisfaction : MonoBehaviour
     void Update()
     {
         slider.value = calcSatisfaction();
+        fill.color = Color.Lerp(new Color(1, 0, 0, 1),new Color(0, 1, 0, 1), (float)slider.value);
+
         if (npc_master.satisfactionLvl <= 0)
         {
-            Destroy(gameObject);//TODO make him leave the shop & playerrating goes down
+            Destroy(gameObject);//TODO make him leave the shop 
+            display_UI.zufriedenheitsWert -= 10f;
         }
         if (npc_master.satisfactionLvl > maxSatisfaction)
         {
