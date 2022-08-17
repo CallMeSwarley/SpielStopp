@@ -14,8 +14,6 @@ public class Display_UI : MonoBehaviour
 
     private float maxSatisfaction = 100f;
     private float minSatisfaction = 0f;
-    private float redVal = 0f;
-    private float greenVal = 255f;
 
     // Update is called once per frame
     void Update()
