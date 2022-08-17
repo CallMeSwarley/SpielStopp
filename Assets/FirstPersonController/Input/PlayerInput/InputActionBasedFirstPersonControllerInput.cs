@@ -35,7 +35,7 @@ public class InputActionBasedFirstPersonControllerInput : FirstPersonControllerI
         //Hides Mouse and locks it in game window
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
-
+        
         //Movement
         _move = this.UpdateAsObservable().Select(_ => _controls.Game.Move.ReadValue<Vector2>());
 

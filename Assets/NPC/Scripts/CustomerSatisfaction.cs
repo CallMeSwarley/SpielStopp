@@ -29,7 +29,7 @@ public class CustomerSatisfaction : MonoBehaviour
     void Update()
     {
         slider.value = calcSatisfaction();
-        fill.color = Color.Lerp(new Color(1, 0, 0, 1),new Color(0, 1, 0, 1), (float)slider.value);
+        fill.color = Color.Lerp(new Color(1, 0, 0, 1),new Color(0, 1, 0, 1), (float)slider.value);//green->red
 
         if (npc_master.satisfactionLvl <= 0)
         {
