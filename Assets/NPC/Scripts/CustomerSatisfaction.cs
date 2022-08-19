@@ -15,12 +15,11 @@ public class CustomerSatisfaction : MonoBehaviour
 
     float satisfactionLvl;
     float maxSatisfaction;
-
+    private bool receivedSatisfactionpoints = false;
     // Start is called before the first frame update
     void Start()
     {
         maxSatisfaction= npc_master.maxSatisfaction;
-        satisfactionLvl = npc_master.maxSatisfaction;
         slider.value = calcSatisfaction();
         satisfactionBarUI.SetActive(true);
     }
@@ -28,24 +27,28 @@ public class CustomerSatisfaction : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        slider.value = calcSatisfaction();
+        float val= calcSatisfaction();
+        slider.value = val;
         fill.color = Color.Lerp(new Color(1, 0, 0, 1),new Color(0, 1, 0, 1), (float)slider.value);//green->red
 
-        if (npc_master.satisfactionLvl <= 0)
+        if (npc_master.satisfactionLvl <= 0 && npc_master.currentState != NPC_master.state.leaving)
         {
-            Destroy(gameObject);//TODO make him leave the shop 
+            npc_master.currentState = NPC_master.state.leaving;
             display_UI.zufriedenheitsWert -= 10f;
         }
         if (npc_master.satisfactionLvl > maxSatisfaction)
         {
             npc_master.satisfactionLvl = maxSatisfaction;
         }
+        if (npc_master.currentState == NPC_master.state.satisfied && !receivedSatisfactionpoints)
+        {
+            display_UI.zufriedenheitsWert += (int)(10f*val);
+            receivedSatisfactionpoints = true;
+        }
     }
 
     float calcSatisfaction()
     {
-        //TODO add more vars to calculate the satisfaction
-        //TODO if he has wish, satisfaction goes down fluently
         return npc_master.satisfactionLvl / maxSatisfaction; //returns value between 0 and 1 vgl. Slider in Unity
     }
 }

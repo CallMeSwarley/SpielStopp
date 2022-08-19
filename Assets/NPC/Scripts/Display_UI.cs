@@ -7,14 +7,12 @@ using TMPro;
 public class Display_UI : MonoBehaviour
 {
     public float geldWert = 0f;
-    public float zufriedenheitsWert = 100f;
-
+    public float zufriedenheitsWert=50f;
     public TMP_Text geldAnzeige;
     public TMP_Text zufriedenheitsAnzeige;
 
     private float maxSatisfaction = 100f;
     private float minSatisfaction = 0f;
-
     // Update is called once per frame
     void Update()
     {

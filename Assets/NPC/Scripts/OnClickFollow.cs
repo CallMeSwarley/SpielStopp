@@ -3,9 +3,10 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.AI;
+using System;
 
 
-public class OnClickFollow : MonoBehaviour, Interactable
+public class InteractionManager : MonoBehaviour, Interactable
 {
     public NPC_master npc_master;
     //Transform that NPC has to follow
