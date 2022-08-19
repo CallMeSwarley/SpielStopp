@@ -74,14 +74,7 @@ public class NPC_master : MonoBehaviour //for all the stats & bahaviour of the n
     void Update()
     {
         agent.stoppingDistance = 0;
-        if (currentState == state.justLooking || currentState == state.leaving || currentState == state.gotoRegister)
-        {
-            hasWish = false;
-        }
-        else
-        {
-            hasWish = true;
-        }
+        hasWish = (currentState == state.justLooking || currentState == state.leaving || currentState == state.gotoRegister) ? false : true;
         if (currentState == state.leaving)
         {
             agent.destination = leavingPos;
@@ -95,7 +88,7 @@ public class NPC_master : MonoBehaviour //for all the stats & bahaviour of the n
             agent.destination = registerPos;
             if (transform.position.x == registerPos.x && transform.position.z == registerPos.z)
             {
-                currentState = state.satisfied;// TODO hier noch kassenwunsch einfügen + zahlvorgang
+                currentState = state.satisfied;// TODO hier noch kassenwunsch(siehe trade&buy enum) einfügen + zahlvorgang
             }
         }        
         else if (currentState == state.searchingForSth && followPlayer)

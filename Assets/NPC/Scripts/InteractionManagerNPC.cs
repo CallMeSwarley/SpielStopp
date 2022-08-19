@@ -30,9 +30,9 @@ public class InteractionManagerNPC : MonoBehaviour, Interactable
     public void Interact()
     {
         npc_material.SetColor("_Color", Color.red);//select mode
-        if (Input.GetMouseButtonDown(0))//obj anklicken
+        if (Input.GetMouseButtonDown(0))
         {       
-            if (npc_master.currentState == NPC_master.state.searchingForSth)//searching for sth
+            if (npc_master.currentState == NPC_master.state.searchingForSth)
             {
                 npc_master.onClickFollow();
             }
@@ -42,9 +42,5 @@ public class InteractionManagerNPC : MonoBehaviour, Interactable
     {
         npc_material.SetColor("_Color", originalColor);//exit select mode
     }
-    
-    void Update()
-    {
-        
-    }
+
 }
