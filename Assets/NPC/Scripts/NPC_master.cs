@@ -40,16 +40,13 @@ public class NPC_master : MonoBehaviour //for all the stats & bahaviour of the n
     private bool followPlayer = false; // changes when you click on the npc and rechanges if you click again
     public state currentState;
     bool coroutineRunning;
+    bool wantedGameNotHere = false;
     // Start is called before the first frame update
     
     int wantedGameId;
     void Start()
     {
-<<<<<<< Updated upstream
-        currentState = state.justLooking;// TODO: zukünftig random zuwesísen & haswish nach random sek nach spawn aktivieren
-=======
         currentState = state.searchingForSth;// TODO: zukünftig random zuweisen & haswish nach random sek nach spawn aktivieren
->>>>>>> Stashed changes
         coroutineRunning = false;
         receivesHelp = false;
         registerPos = new Vector3(-13, 1.55f, -2);
@@ -59,10 +56,65 @@ public class NPC_master : MonoBehaviour //for all the stats & bahaviour of the n
         myRenderer = GetComponent<Renderer>();
         npc_material = myRenderer.material;
         originalColor = npc_material.GetColor("_Color");
-        //wantedGameId = selectWishedGame();
+        wantedGameId = selectWishedGame();
     }
 
+    int selectWishedGame() {
 
+        //Generiert Wunschliste vom Kunden entweder basierend auf Rating, Trend oder Genre der Spiele. 
+        int random = UnityEngine.Random.Range(0, 2);
+        switch (random) {
+            //Nachteil: Nimmt immer erstes spiel in der liste bei jeder der methoden. TODO: Ein spiel aus Pool mit richtigen Bewertungen aussuchen? 
+            case 0:
+                return selectFromRating();
+            case 1:
+                return selectFromTrend();
+            case 2:
+                return selectFromGenre ();
+        }
+        return 0;
+    }
+
+    int selectFromRating() {
+        //Kunde will nur spiele mit Rating 4-5
+        
+        if (ProductDataManager.RatingData.Contains(5))
+        {
+            return ProductDataManager.RatingData.IndexOf(5);
+        }
+        else if(ProductDataManager.RatingData.Contains(4))
+        {
+            return ProductDataManager.RatingData.IndexOf(4);
+        }
+        wantedGameNotHere = true;
+        return 0;
+    }
+
+    int selectFromTrend() {
+        //Kunde will nur spiele mit trend 4-5
+        if (ProductDataManager.TrendData.Contains(5))
+        {
+            return ProductDataManager.TrendData.IndexOf(5);
+        }
+        else if (ProductDataManager.TrendData.Contains(4))
+        {
+            return ProductDataManager.TrendData.IndexOf(4);
+        }
+        wantedGameNotHere = true;
+        return 0;
+    }
+
+    int selectFromGenre() {
+        Genre wanted = GenreGiver.giveGenre();
+        if (ProductDataManager.Genre1Data.Contains(wanted)){
+            return ProductDataManager.Genre1Data.IndexOf(wanted);
+        }
+        else if (ProductDataManager.Genre1Data.Contains(wanted)){
+            return ProductDataManager.Genre1Data.IndexOf(wanted);
+        }
+        wantedGameNotHere = true;
+        return 0;
+    }
 
     public void onClickFollow()
     {

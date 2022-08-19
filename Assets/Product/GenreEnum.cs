@@ -21,5 +21,14 @@ public enum Genre
 
 }
 
+class GenreGiver{
+    public static Genre giveGenre()
+    {
+        int select = Random.Range(0, 11);
+        return (Genre)select;
+    }
+}
+
+
     
     
