@@ -5,7 +5,7 @@ using UnityEngine;
 
 
 /// <summary>
-///     Controller that handles the character controls and camera controls of the first person player.
+///    Controller adapted largely from the First Person Controller Exercise of the IMGE Practical Course in Tum.
 /// </summary>
 [RequireComponent(typeof(CharacterController))]
 public class FirstPersonController : MonoBehaviour, ICharacterSignals

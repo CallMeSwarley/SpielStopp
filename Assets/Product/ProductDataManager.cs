@@ -7,16 +7,17 @@ public class ProductDataManager : MonoBehaviour
 {
     public TextAsset jsonFile;
 
-    public List<string> TitleData = new List<string>();
-    public List<Genre> Genre1Data = new List<Genre>();
-    public List<Genre> Genre2Data = new List<Genre>();
-    public List<int> RatingData = new List<int>();
-    public List<int> TrendData = new List<int>();
+    public static List<string> TitleData = new List<string>();
+    public static List<Genre> Genre1Data = new List<Genre>();
+    public static List<Genre> Genre2Data = new List<Genre>();
+    public static List<int> RatingData = new List<int>();
+    public static List<int> TrendData = new List<int>();
 
     int maxIndex = -1;
 
     void Start()
     {
+        //Json Reader adapted from https://forum.unity.com/threads/how-to-read-json-file.401306/
         Products JsonData = JsonUtility.FromJson<Products>(jsonFile.text);
 
         foreach (Product product in JsonData.products)

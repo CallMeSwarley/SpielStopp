@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -40,9 +41,15 @@ public class NPC_master : MonoBehaviour //for all the stats & bahaviour of the n
     public state currentState;
     bool coroutineRunning;
     // Start is called before the first frame update
+    
+    int wantedGameId;
     void Start()
     {
+<<<<<<< Updated upstream
         currentState = state.justLooking;// TODO: zukünftig random zuwesísen & haswish nach random sek nach spawn aktivieren
+=======
+        currentState = state.searchingForSth;// TODO: zukünftig random zuweisen & haswish nach random sek nach spawn aktivieren
+>>>>>>> Stashed changes
         coroutineRunning = false;
         receivesHelp = false;
         registerPos = new Vector3(-13, 1.55f, -2);
@@ -52,7 +59,10 @@ public class NPC_master : MonoBehaviour //for all the stats & bahaviour of the n
         myRenderer = GetComponent<Renderer>();
         npc_material = myRenderer.material;
         originalColor = npc_material.GetColor("_Color");
+        //wantedGameId = selectWishedGame();
     }
+
+
 
     public void onClickFollow()
     {
@@ -75,48 +85,28 @@ public class NPC_master : MonoBehaviour //for all the stats & bahaviour of the n
     {
         agent.stoppingDistance = 0;
         hasWish = (currentState == state.justLooking || currentState == state.leaving || currentState == state.gotoRegister) ? false : true;
-        if (currentState == state.leaving)
-        {
-            agent.destination = leavingPos;
-            if (transform.position.x == leavingPos.x && transform.position.z == leavingPos.z)
-            {
-                Destroy(gameObject);//Laden verlassen
-            }
-        }
-        else if (currentState == state.gotoRegister)
-        {
-            agent.destination = registerPos;
-            if (transform.position.x == registerPos.x && transform.position.z == registerPos.z)
-            {
-                currentState = state.satisfied;// TODO hier noch kassenwunsch(siehe trade&buy enum) einfügen + zahlvorgang
-            }
-        }        
-        else if (currentState == state.searchingForSth && followPlayer)
-        {
-            agent.stoppingDistance = 3;
-            npc_material.SetColor("_Color", Color.blue);
-            agent.destination = transformToFollow.position;
-            if (transform.position.x <= goalPos.x + 0.2 && transform.position.x >= goalPos.x - 0.2 &&
-                transform.position.y <= goalPos.y + 0.2 && transform.position.y >= goalPos.y - 0.2 &&
-                transform.position.z <= goalPos.z + 0.2 && transform.position.z >= goalPos.z - 0.2)
-            //bin am zielort(mit radius) angekommen
-            {
-                followPlayer = false;
-                currentState = state.gotoRegister;
-                agent.destination = registerPos;
-            }
-            
-        }
-        else if (currentState == state.satisfied)
-        {
-            hasWish = false;
-            currentState = state.leaving;
-        }
-        else// stehenbleiben
-        {
-            agent.destination = transform.position;//TODO rumgeh verhalten einfügen
-        }
-        
+
+        switch (currentState) {
+            case state.leaving:
+                leaveStore();
+                break;
+            case state.gotoRegister:
+                goToRegister();
+                break;
+            case state.searchingForSth:
+                if (followPlayer == true) {
+                    leadMe();
+                }
+                break;
+            case state.satisfied:
+                hasWish = false;
+                currentState = state.leaving;
+                break;
+            default:
+                agent.destination = transform.position;//TODO rumgeh verhalten einfügen
+                break;
+        }       
+               
         if (!receivesHelp)//zufriedenheitsanzeige regeln
         {
             if (hasWish && !coroutineRunning)
@@ -146,6 +136,38 @@ public class NPC_master : MonoBehaviour //for all the stats & bahaviour of the n
         {
             satisfactionLvl -= desatisfactionSpeed * Time.deltaTime;
             yield return null;
+        }
+    }
+
+    private void leaveStore() {
+        agent.destination = leavingPos;
+        if (transform.position.x == leavingPos.x && transform.position.z == leavingPos.z)
+        {
+            Destroy(gameObject);//Laden verlassen
+        }
+    }
+
+    private void leadMe() {
+        agent.stoppingDistance = 3;
+        npc_material.SetColor("_Color", Color.blue);
+        agent.destination = transformToFollow.position;
+        if (transform.position.x <= goalPos.x + 0.2 && transform.position.x >= goalPos.x - 0.2 &&
+            transform.position.y <= goalPos.y + 0.2 && transform.position.y >= goalPos.y - 0.2 &&
+            transform.position.z <= goalPos.z + 0.2 && transform.position.z >= goalPos.z - 0.2)
+        //bin am zielort(mit radius) angekommen
+        {
+            followPlayer = false;
+            currentState = state.gotoRegister;
+            agent.destination = registerPos;
+        }
+    }
+
+    private void goToRegister()
+    {
+        agent.destination = registerPos;
+        if (transform.position.x == registerPos.x && transform.position.z == registerPos.z)
+        {
+            currentState = state.satisfied;// TODO hier noch kassenwunsch(siehe trade&buy enum) einfügen + zahlvorgang
         }
     }
 }
