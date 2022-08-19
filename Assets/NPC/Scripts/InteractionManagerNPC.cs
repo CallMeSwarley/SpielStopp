@@ -10,6 +10,7 @@ public class InteractionManagerNPC : MonoBehaviour, Interactable
 {
     public NPC_master npc_master;
     public Transform transformToFollow;
+    public DialogMenu dialogMenu;
     Material npc_material;
     Renderer myRenderer;
     Color originalColor;
@@ -17,6 +18,7 @@ public class InteractionManagerNPC : MonoBehaviour, Interactable
     // Start is called before the first frame update
     void Start()
     {
+        dialogMenu.gameObject.SetActive(false);
         myRenderer = GetComponent<Renderer>();
         npc_material = myRenderer.material;
         originalColor = npc_material.GetColor("_Color");
@@ -31,8 +33,24 @@ public class InteractionManagerNPC : MonoBehaviour, Interactable
     {
         npc_material.SetColor("_Color", Color.red);//select mode
         if (Input.GetMouseButtonDown(0))
-        {       
-            if (npc_master.currentState == NPC_master.state.searchingForSth)
+        {   
+            if(npc_master.currentState == NPC_master.state.justLooking)
+            {
+                //dialogMenu.inkJSONAsset = (TextAsset)GameObject.Find("Assets/Dialoge/justLookingDialogue.ink");
+                if (dialogMenu.gameObject.activeSelf)
+                {
+                    Cursor.lockState = CursorLockMode.Locked;
+                    Cursor.visible = false;
+                    dialogMenu.gameObject.SetActive(false);
+                }
+                else
+                {
+                    Cursor.lockState = CursorLockMode.Confined;
+                    Cursor.visible = true;
+                    dialogMenu.gameObject.SetActive(true);
+                }                
+            }
+            else if (npc_master.currentState == NPC_master.state.searchingForSth)
             {
                 npc_master.onClickFollow();
             }

@@ -42,7 +42,7 @@ public class NPC_master : MonoBehaviour //for all the stats & bahaviour of the n
     // Start is called before the first frame update
     void Start()
     {
-        currentState = state.searchingForSth;// TODO: zukünftig random zuwesísen & haswish nach random sek nach spawn aktivieren
+        currentState = state.justLooking;// TODO: zukünftig random zuwesísen & haswish nach random sek nach spawn aktivieren
         coroutineRunning = false;
         receivesHelp = false;
         registerPos = new Vector3(-13, 1.55f, -2);
