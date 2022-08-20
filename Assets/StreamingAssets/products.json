@@ -4,36 +4,36 @@
       "title": "Boom Forever",
       "genre1": "FPS",
       "genre2": "Action",
-      "rating": 4,
+      "rating": 5,
       "trend": 2
     },
     {
       "title": "Wallet Impact",
       "genre1": "RPG",
       "genre2": "Sandbox",
-      "rating": 2,
+      "rating": 5,
       "trend": 4
     },
     {
       "title": "Human Gatherer",
       "genre1": "RPG",
       "genre2": "Action",
-      "rating": 4,
-      "trend": 2
+      "rating": 5,
+      "trend": 5  
     },
     {
       "title": "Studio Dying",
       "genre1": "RPG",
       "genre2": "Adventure",
-      "rating": 1,
+      "rating": 2,
       "trend": 4
     },
     {
       "title": "Legally not TFT",
       "genre1": "RTS",
       "genre2": "-",
-      "rating": 1,
-      "trend": 4
+      "rating": 3,
+      "trend": 2
     },
     {
       "title": "For Balance",
