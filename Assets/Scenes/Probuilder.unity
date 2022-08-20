@@ -15706,7 +15706,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10abec33bc551204994a673eb9cb46de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  geldWert: 0
+  geldWert: 5000
   zufriedenheitsWert: 50
   geldAnzeige: {fileID: 1072456524}
   zufriedenheitsAnzeige: {fileID: 1073933409}
