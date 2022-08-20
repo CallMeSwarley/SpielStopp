@@ -149,6 +149,10 @@ public class NPC_master : MonoBehaviour //for all the stats & bahaviour of the n
                 if (followPlayer == true) {
                     leadMe();
                 }
+                else
+                {
+                    agent.destination = transform.position;
+                }
                 break;
             case state.satisfied:
                 hasWish = false;
