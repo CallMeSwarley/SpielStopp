@@ -8,6 +8,7 @@ public class PauseMenu : MonoBehaviour
 {
     public string menu;
     public static bool isPaused = false;
+    private bool inDialog = false;
     public GameObject PauseMenuUI;
     // Start is called before the first frame update
     void Start()
@@ -37,16 +38,20 @@ public class PauseMenu : MonoBehaviour
         PauseMenuUI.SetActive(true);
         Cursor.lockState = CursorLockMode.Confined;
         Cursor.visible = true;
-        Time.timeScale = 0.0001f;//freezes time in game       
+        inDialog = Time.timeScale == 0.00001f;
+        Time.timeScale = 0.00001f;//freezes time in game       
     }
 
     public void resumeGame()
     {
+        if (!inDialog)
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+            Time.timeScale = 1f;
+        }
         isPaused = false;
         PauseMenuUI.SetActive(false);
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
-        Time.timeScale = 1f;
     }
 
     public void gotoMenu()

@@ -2,21 +2,36 @@ using UnityEngine;
 using UnityEngine.UI;
 using System;
 using Ink.Runtime;
+using UnityEditor;
 
 // This is a super bare bones example of how to play and display a ink story in Unity.
 public class DialogMenu : MonoBehaviour
 {
 	public static event Action<Story> OnCreateStory;
+	private InteractionManagerNPC interactionManagerNPC;
+	private TextAsset inkJSONAsset;
+	private Action actionAfterDialog=null;
 
-	void Start()
-	{
-		// Remove the default message
+	public void startDialog(InteractionManagerNPC interactionManagerNPC, String pathToJSON, Action actionAfterDialog = null)
+    {
+		this.interactionManagerNPC = interactionManagerNPC;
+		inkJSONAsset = (TextAsset)AssetDatabase.LoadAssetAtPath(pathToJSON, typeof(TextAsset));
+        if (actionAfterDialog != null) { this.actionAfterDialog = actionAfterDialog; }
+        if (inkJSONAsset == null)//default dialog
+        {
+			Debug.Log("Couldn't find dialog -> using default");
+			inkJSONAsset = (TextAsset)AssetDatabase.LoadAssetAtPath("Assets/Dialoge/justLookingDialogue.json", typeof(TextAsset));
+		}
 		RemoveChildren();
 		StartStory();
 	}
-
+	public void startDialog()
+    {
+		RemoveChildren();
+		StartStory();
+	}
 	// Creates a new Story object with the compiled story which we can then play!
-	void StartStory()
+	public void StartStory()
 	{
 		story = new Story(inkJSONAsset.text);
 		if (OnCreateStory != null) OnCreateStory(story);
@@ -58,13 +73,12 @@ public class DialogMenu : MonoBehaviour
 		// If we've read all the content and there's no choices, the story is finished!
 		else
 		{
-			Button choice = CreateChoiceView("End of story.\nRestart?");
+			Button choice = CreateChoiceView("Do sth. else");
 			choice.onClick.AddListener(delegate {
-				StartStory();
+				interactionManagerNPC.endDialog(actionAfterDialog);
 			});
 		}
 	}
-
 	// When we click the choice button, tell the story to choose that choice!
 	void OnClickChoiceButton(Choice choice)
 	{
@@ -77,7 +91,7 @@ public class DialogMenu : MonoBehaviour
 	{
 		Text storyText = Instantiate(textPrefab) as Text;
 		storyText.text = text;
-		storyText.transform.SetParent(canvas.transform, false);
+		storyText.transform.SetParent(panel.transform, false);
 	}
 
 	// Creates a button showing the choice text
@@ -85,7 +99,7 @@ public class DialogMenu : MonoBehaviour
 	{
 		// Creates the button from a prefab
 		Button choice = Instantiate(buttonPrefab) as Button;
-		choice.transform.SetParent(canvas.transform, false);
+		choice.transform.SetParent(panel.transform, false);
 
 		// Gets the text from the button prefab
 		Text choiceText = choice.GetComponentInChildren<Text>();
@@ -101,19 +115,19 @@ public class DialogMenu : MonoBehaviour
 	// Destroys all the children of this gameobject (all the UI)
 	void RemoveChildren()
 	{
-		int childCount = canvas.transform.childCount;
+		int childCount = panel.transform.childCount;
 		for (int i = childCount - 1; i >= 0; --i)
 		{
-			GameObject.Destroy(canvas.transform.GetChild(i).gameObject);
+			GameObject.Destroy(panel.transform.GetChild(i).gameObject);
 		}
 	}
 
-	[SerializeField]
-	public TextAsset inkJSONAsset = null;
+	//[SerializeField]
+	//public TextAsset inkJSONAsset;
 	public Story story;
 
 	[SerializeField]
-	private Canvas canvas = null;
+	private Canvas panel = null;
 
 	// UI Prefabs
 	[SerializeField]
