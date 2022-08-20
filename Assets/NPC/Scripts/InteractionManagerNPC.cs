@@ -41,12 +41,16 @@ public class InteractionManagerNPC : MonoBehaviour, Interactable
                 {
                     Cursor.lockState = CursorLockMode.Locked;
                     Cursor.visible = false;
+                    Time.timeScale = 1f;
                     dialogMenu.gameObject.SetActive(false);
+                    interactable = true;
                 }
                 else
                 {
                     Cursor.lockState = CursorLockMode.Confined;
                     Cursor.visible = true;
+                    Time.timeScale = 0.00001f;
+                    interactable = false;
                     dialogMenu.gameObject.SetActive(true);
                 }                
             }
