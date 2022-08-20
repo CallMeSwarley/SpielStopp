@@ -41,7 +41,7 @@ public class InteractionManagerNPC : MonoBehaviour, Interactable
             }
             else if (npc_master.currentState == NPC_master.state.searchingForSth)
             {
-                npc_master.onClickFollow();
+                startDialog("Assets/Dialoge/justLookingDialogue.json", npc_master.onClickFollow);
             }
         }
     }
@@ -49,7 +49,7 @@ public class InteractionManagerNPC : MonoBehaviour, Interactable
     {
         npc_material.SetColor("_Color", originalColor);//exit select mode
     }
-    void startDialog(String path)//path where the storyjson is
+    void startDialog(String path,Action afterDialog=null)//path where the storyjson is
     {
         if (!dialogMenu.gameObject.activeSelf)
         {
@@ -57,11 +57,11 @@ public class InteractionManagerNPC : MonoBehaviour, Interactable
             Cursor.visible = true;
             Time.timeScale = 0.00001f;
             interactable = false;
-            dialogMenu.startDialog(this, path);
+            dialogMenu.startDialog(this, path, afterDialog);
             dialogMenu.gameObject.SetActive(true);
         }
     }
-    public void endDialog()
+    public void endDialog(Action actionAfterDialog=null)
     {
         dialogMenu.gameObject.SetActive(false);
         dialogMenu.StartStory();
@@ -69,5 +69,9 @@ public class InteractionManagerNPC : MonoBehaviour, Interactable
         Cursor.visible = false;
         Time.timeScale = 1f;
         interactable = true;
+        if (actionAfterDialog != null)
+        {
+            actionAfterDialog();
+        }
     }
 }

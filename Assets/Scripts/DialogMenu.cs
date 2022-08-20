@@ -10,11 +10,13 @@ public class DialogMenu : MonoBehaviour
 	public static event Action<Story> OnCreateStory;
 	private InteractionManagerNPC interactionManagerNPC;
 	private TextAsset inkJSONAsset;
+	private Action actionAfterDialog=null;
 
-	public void startDialog(InteractionManagerNPC interactionManagerNPC, String pathToJSON)
+	public void startDialog(InteractionManagerNPC interactionManagerNPC, String pathToJSON, Action actionAfterDialog = null)
     {
 		this.interactionManagerNPC = interactionManagerNPC;
 		inkJSONAsset = (TextAsset)AssetDatabase.LoadAssetAtPath(pathToJSON, typeof(TextAsset));
+        if (actionAfterDialog != null) { this.actionAfterDialog = actionAfterDialog; }
         if (inkJSONAsset == null)//default dialog
         {
 			Debug.Log("Couldn't find dialog -> using default");
@@ -73,7 +75,7 @@ public class DialogMenu : MonoBehaviour
 		{
 			Button choice = CreateChoiceView("Do sth. else");
 			choice.onClick.AddListener(delegate {
-				interactionManagerNPC.endDialog();
+				interactionManagerNPC.endDialog(actionAfterDialog);
 			});
 		}
 	}
