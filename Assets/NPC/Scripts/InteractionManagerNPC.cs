@@ -1,5 +1,6 @@
 //adapted from https://sharpcoderblog.com/blog/npc-follow-player-in-unity-3d
 using UnityEngine;
+using UnityEditor;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.AI;
@@ -14,7 +15,7 @@ public class InteractionManagerNPC : MonoBehaviour, Interactable
     Material npc_material;
     Renderer myRenderer;
     Color originalColor;
-    bool interactable = true;
+    public bool interactable = true;
     // Start is called before the first frame update
     void Start()
     {
@@ -36,27 +37,11 @@ public class InteractionManagerNPC : MonoBehaviour, Interactable
         {   
             if(npc_master.currentState == NPC_master.state.justLooking)
             {
-                //dialogMenu.inkJSONAsset = (TextAsset)GameObject.Find("Assets/Dialoge/justLookingDialogue.ink");
-                if (dialogMenu.gameObject.activeSelf)
-                {
-                    Cursor.lockState = CursorLockMode.Locked;
-                    Cursor.visible = false;
-                    Time.timeScale = 1f;
-                    dialogMenu.gameObject.SetActive(false);
-                    interactable = true;
-                }
-                else
-                {
-                    Cursor.lockState = CursorLockMode.Confined;
-                    Cursor.visible = true;
-                    Time.timeScale = 0.00001f;
-                    interactable = false;
-                    dialogMenu.gameObject.SetActive(true);
-                }                
+                startDialog("Assets/Dialoge/justLookingDialogue.json");
             }
             else if (npc_master.currentState == NPC_master.state.searchingForSth)
             {
-                npc_master.onClickFollow();
+                startDialog("Assets/Dialoge/justLookingDialogue.json", npc_master.onClickFollow);
             }
         }
     }
@@ -64,5 +49,29 @@ public class InteractionManagerNPC : MonoBehaviour, Interactable
     {
         npc_material.SetColor("_Color", originalColor);//exit select mode
     }
-
+    void startDialog(String path,Action afterDialog=null)//path where the storyjson is
+    {
+        if (!dialogMenu.gameObject.activeSelf)
+        {
+            Cursor.lockState = CursorLockMode.Confined;
+            Cursor.visible = true;
+            Time.timeScale = 0.00001f;
+            interactable = false;
+            dialogMenu.startDialog(this, path, afterDialog);
+            dialogMenu.gameObject.SetActive(true);
+        }
+    }
+    public void endDialog(Action actionAfterDialog=null)
+    {
+        dialogMenu.gameObject.SetActive(false);
+        dialogMenu.StartStory();
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+        Time.timeScale = 1f;
+        interactable = true;
+        if (actionAfterDialog != null)
+        {
+            actionAfterDialog();
+        }
+    }
 }
