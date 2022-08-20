@@ -59,60 +59,84 @@ public class NPC_master : MonoBehaviour //for all the stats & bahaviour of the n
         wantedGameId = selectWishedGame();
     }
 
-    int selectWishedGame() {
+    int selectWishedGame()
+    {
 
         //Generiert Wunschliste vom Kunden entweder basierend auf Rating, Trend oder Genre der Spiele. 
-        int random = UnityEngine.Random.Range(0, 2);
-        switch (random) {
+        int random = UnityEngine.Random.Range(0, 3);
+        switch (random)
+        {
             //Nachteil: Nimmt immer erstes spiel in der liste bei jeder der methoden. TODO: Ein spiel aus Pool mit richtigen Bewertungen aussuchen? 
             case 0:
                 return selectFromRating();
+
             case 1:
                 return selectFromTrend();
             case 2:
-                return selectFromGenre ();
+                return selectFromGenre();
         }
         return 0;
     }
 
-    int selectFromRating() {
+    int selectFromRating()
+    {
+        List<int> PotentialGames = new List<int>();
         //Kunde will nur spiele mit Rating 4-5
-        
-        if (ProductDataManager.RatingData.Contains(5))
+        for (int i = 0; i < ProductDataManager.RatingData.Count; i++)
         {
-            return ProductDataManager.RatingData.IndexOf(5);
+            Debug.Log(i);
+            if (ProductDataManager.RatingData[i] >= 4)
+            {
+                PotentialGames.Add(i);
+            }
         }
-        else if(ProductDataManager.RatingData.Contains(4))
+        if (PotentialGames.Count > 0)
         {
-            return ProductDataManager.RatingData.IndexOf(4);
+            int GameId = UnityEngine.Random.Range(0, PotentialGames.Count);
+            return GameId;
         }
-        wantedGameNotHere = true;
         return 0;
     }
 
-    int selectFromTrend() {
-        //Kunde will nur spiele mit trend 4-5
-        if (ProductDataManager.TrendData.Contains(5))
+    int selectFromTrend()
+    {
+        List<int> PotentialGames = new List<int>();
+        //Kunde will nur spiele mit Trend 4-5
+        for (int i = 0; i < ProductDataManager.TrendData.Count; i++)
         {
-            return ProductDataManager.TrendData.IndexOf(5);
+            Debug.Log(i);
+            if (ProductDataManager.TrendData[i] >= 4)
+            {
+                PotentialGames.Add(i);
+            }
         }
-        else if (ProductDataManager.TrendData.Contains(4))
+        if (PotentialGames.Count > 0)
         {
-            return ProductDataManager.TrendData.IndexOf(4);
+            int GameId = UnityEngine.Random.Range(0, PotentialGames.Count);
+            return GameId;
         }
-        wantedGameNotHere = true;
         return 0;
     }
 
-    int selectFromGenre() {
+    int selectFromGenre()
+    {
         Genre wanted = GenreGiver.giveGenre();
-        if (ProductDataManager.Genre1Data.Contains(wanted)){
-            return ProductDataManager.Genre1Data.IndexOf(wanted);
+
+        List<int> PotentialGames = new List<int>();
+        //Kunde will nur spiele mit Trend 4-5
+        for (int i = 0; i < ProductDataManager.Genre1Data.Count; i++)
+        {
+            Debug.Log(i);
+            if (ProductDataManager.Genre1Data[i] == wanted || ProductDataManager.Genre2Data[i] == wanted)
+            {
+                PotentialGames.Add(i);
+            }
         }
-        else if (ProductDataManager.Genre1Data.Contains(wanted)){
-            return ProductDataManager.Genre1Data.IndexOf(wanted);
+        if (PotentialGames.Count > 0)
+        {
+            int GameId = UnityEngine.Random.Range(0, PotentialGames.Count);
+            return GameId;
         }
-        wantedGameNotHere = true;
         return 0;
     }
 
