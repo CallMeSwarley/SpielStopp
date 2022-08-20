@@ -1,12 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
-
 
 public class ProductDataManager : MonoBehaviour
 {
-    public TextAsset jsonFile;
-
+    
     public static List<string> TitleData = new List<string>();
     public static List<Genre> Genre1Data = new List<Genre>();
     public static List<Genre> Genre2Data = new List<Genre>();
@@ -18,12 +17,15 @@ public class ProductDataManager : MonoBehaviour
     void Start()
     {
         //Json Reader adapted from https://forum.unity.com/threads/how-to-read-json-file.401306/
-        Products JsonData = JsonUtility.FromJson<Products>(jsonFile.text);
+        string path = Application.streamingAssetsPath + "/products.json";
+        string data = File.ReadAllText(path);
+        Products JsonData = JsonUtility.FromJson<Products>(data);
 
         foreach (Product product in JsonData.products)
         {
 
             TitleData.Add(product.title);
+            Debug.Log(product.title);
             Genre1Data.Add(getGenre(product.genre1));
             Genre2Data.Add(getGenre(product.genre2));
             RatingData.Add(product.rating);
@@ -79,6 +81,7 @@ public class ProductDataManager : MonoBehaviour
         }
         return TrendData[index];
     }
+
 
     //This is a mess but if somebody has a better idea please share it
     public Genre getGenre(string value) {
