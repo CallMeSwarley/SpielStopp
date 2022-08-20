@@ -1,9 +1,19 @@
 fileFormatVersion: 2
 guid: d1694565f8b61a9408519173840efacc
 ModelImporter:
-  serializedVersion: 21300
+  serializedVersion: 21202
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mat_shelf
+    second: {fileID: 2100000, guid: f4041b3b9260ab049bdcb997f79c2d49, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mat_shelf_glass
+    second: {fileID: 2100000, guid: a738bfe228059224fbef7a7b974f7666, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -99,7 +109,6 @@ ModelImporter:
   humanoidOversampling: 1
   avatarSetup: 0
   addHumanoidExtraRootOnlyWhenUsingAvatar: 1
-  remapMaterialsIfMaterialImportModeIsNone: 0
   additionalBone: 0
   userData: 
   assetBundleName: 
