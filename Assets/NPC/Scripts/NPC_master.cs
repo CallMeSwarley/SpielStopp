@@ -25,7 +25,6 @@ public class NPC_master : MonoBehaviour //for all the stats & bahaviour of the n
     {
         searchingForSth, // where is object xy located?
         wantToBuy,// TODO nach goto register kann er buy oder traden
-        wantToTrade,
         hasQuestion, //TODO implement dialog system with choices
         wantsAdvice, //TODO implement dialog system with choices
         justLooking, // default wert-> wenn man ihn dann anspricht sagte er "just looking"
@@ -159,7 +158,7 @@ public class NPC_master : MonoBehaviour //for all the stats & bahaviour of the n
                 currentState = state.leaving;
                 break;
             default:
-                agent.destination = transform.position;//TODO rumgeh verhalten einfügen
+                agent.destination = transform.position;
                 break;
         }       
                
@@ -223,7 +222,7 @@ public class NPC_master : MonoBehaviour //for all the stats & bahaviour of the n
         agent.destination = registerPos;
         if (transform.position.x == registerPos.x && transform.position.z == registerPos.z)
         {
-            currentState = state.satisfied;// TODO hier noch kassenwunsch(siehe trade&buy enum) einfügen + zahlvorgang
+            currentState = state.wantToBuy;
         }
     }
 }
