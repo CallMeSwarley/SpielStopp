@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.IO;
 
 
 public class ProductDataManager : MonoBehaviour
@@ -18,17 +19,42 @@ public class ProductDataManager : MonoBehaviour
     void Start()
     {
         //Json Reader adapted from https://forum.unity.com/threads/how-to-read-json-file.401306/
-        Products JsonData = JsonUtility.FromJson<Products>(jsonFile.text);
+        string path = Application.streamingAssetsPath + "/products.json";
+        string data = File.ReadAllText(path);
+        Products JsonData = JsonUtility.FromJson<Products>(data);
 
         foreach (Product product in JsonData.products)
         {
-
             TitleData.Add(product.title);
             Genre1Data.Add(getGenre(product.genre1));
             Genre2Data.Add(getGenre(product.genre2));
             RatingData.Add(product.rating);
-            TrendData.Add(product.rating);
+            Debug.Log(product.rating);
+            TrendData.Add(product.trend);
             maxIndex++;
+        }
+        Debug.Log("Updated");
+    }
+
+    void OnApplicationQuit()
+    {
+        TitleData.Clear();
+        Genre1Data.Clear();
+        Genre2Data.Clear();
+        RatingData.Clear();
+        TrendData.Clear();
+    }
+
+    private void Update()
+    {
+        
+        if (Input.GetKeyDown("u")) {
+            TitleData.Clear();
+            Genre1Data.Clear();
+            Genre2Data.Clear();
+            RatingData.Clear();
+            TrendData.Clear();
+            Start();
         }
     }
 
