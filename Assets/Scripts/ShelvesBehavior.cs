@@ -4,17 +4,49 @@ using UnityEngine;
 
 public class ShelvesBehavior : MonoBehaviour
 {
-    public static List<int> Inventory = new List<int>();
+    public List<int> Inventory = new List<int>();
+    [SerializeField]
+    private GameObject littleOne;
+    [SerializeField]
+    private GameObject littleTwo;
+    [SerializeField]
+    bool ThreeFlag;
+    [SerializeField]
+    private GameObject littleThree;
 
+
+    private void Start()
+    {
+        littleOne.SetActive(false);
+        littleTwo.SetActive(false);
+        if (ThreeFlag){
+            littleThree.SetActive(false);
+        }
+    }
 
     void stockGame(int ID) {
         Inventory.Add(ID);
+        littleOne.SetActive(true);
+        littleTwo.SetActive(true);
+        if (ThreeFlag)
+        {
+            littleThree.SetActive(true);
+        }
+
     }
 
     //Returns true if a game was succesfully taken and false if nothing could be removed
     bool takeGame(int ID) {
         if (Inventory.Contains(ID)) {
             Inventory.Remove(ID);
+            if (Inventory.Count == 0) {
+                littleOne.SetActive(false);
+                littleTwo.SetActive(false);
+                if (ThreeFlag)
+                {
+                    littleThree.SetActive(false);
+                }
+            }
             return true;
         }
         return false;
