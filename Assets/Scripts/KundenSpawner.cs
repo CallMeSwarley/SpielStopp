@@ -8,7 +8,6 @@ public class KundenSpawner : MonoBehaviour
     float spawnCoolDown;
     [SerializeField]
     GameObject Customer;
-    [SerializeField]
     Display_UI UI;
 
     private void Start()
@@ -19,16 +18,19 @@ public class KundenSpawner : MonoBehaviour
     
     void Update()
     {
-        spawntimer++;
-        if (spawntimer >= spawnCoolDown)
-        {
+        /*spawntimer++;
+            if (spawntimer >= spawnCoolDown)
+            {
+            spawnCustomer();
+         }
+        */
+        if (Input.GetKeyDown("space")){
             spawnCustomer();
         }
     }
 
     void spawnCustomer()
     {
-        float whichShip = Random.Range(0f, 4f);
         Vector3 spawnLocation = new Vector3(-13, 2, -60);
         Instantiate(Customer, spawnLocation, Quaternion.Euler(0f, 0f, 0f));
         spawntimer = 0;

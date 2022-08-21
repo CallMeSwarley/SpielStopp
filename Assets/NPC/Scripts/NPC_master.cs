@@ -102,7 +102,6 @@ public class NPC_master : MonoBehaviour //for all the stats & bahaviour of the n
         //Kunde will nur spiele mit Trend 4-5
         for (int i = 0; i < ProductDataManager.TrendData.Count; i++)
         {
-            Debug.Log(i);
             if (ProductDataManager.TrendData[i] >= 4)
             {
                 PotentialGames.Add(i);

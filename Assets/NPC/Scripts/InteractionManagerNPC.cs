@@ -18,18 +18,21 @@ public class InteractionManagerNPC : MonoBehaviour, Interactable
     Renderer myRenderer;
     Color originalColor;
     public bool interactable = true;
-    public ProductDataManager productDataManager;
     public CashRegister cashRegister;
     public Button jaButton;
     Story story;
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         dialogMenu.gameObject.SetActive(false);
         myRenderer = GetComponent<Renderer>();
         npc_material = myRenderer.material;
         originalColor = npc_material.GetColor("_Color");
-        transformToFollow = GetComponent<FirstPersonController>();
+        transformToFollow = GameObject.FindGameObjectWithTag("Player").transform;
+        dialogMenu = DialogMenu.FindObjectOfType<DialogMenu>();
+        cashRegister = CashRegister.FindObjectOfType<CashRegister>();
+        jaButton = GameObject.Find("JaButton").GetComponent<Button>();
+
     }
     // Allows interactables to decide if they are currently interactable
     public bool IsCurrentlyInteractable()
@@ -53,13 +56,13 @@ public class InteractionManagerNPC : MonoBehaviour, Interactable
             else if (npc_master.currentState == NPC_master.state.searchingForSth)
             {
                 story = createStory("Assets/Dialoge/helpMeLook.json");
-                story.variablesState["lookingFor"] = productDataManager.getTitle(npc_master.wantedGameId);
+                story.variablesState["lookingFor"] = ProductDataManager.TitleData[npc_master.wantedGameId];
                 startDialog(story, npc_master.onClickFollow);
             }
             else if(npc_master.currentState == NPC_master.state.wantToBuy)
             {
                 story = createStory("Assets/Dialoge/buyGame.json");
-                story.variablesState["GameTitle"] = productDataManager.getTitle(npc_master.wantedGameId);
+                story.variablesState["GameTitle"] = ProductDataManager.TitleData[npc_master.wantedGameId];
                 jaButton.onClick.AddListener(delegate {
                     cashRegister.sellGame();
                 });
@@ -68,7 +71,7 @@ public class InteractionManagerNPC : MonoBehaviour, Interactable
             else if (npc_master.currentState == NPC_master.state.wantToSell)
             {
                 story = createStory("Assets/Dialoge/sellGame.json");
-                story.variablesState["GameToSell"] = productDataManager.getTitle(npc_master.wantedGameId);
+                story.variablesState["GameToSell"] = ProductDataManager.TitleData[npc_master.wantedGameId];
                 jaButton.onClick.AddListener(delegate {
                     cashRegister.buyGame();
                 });
