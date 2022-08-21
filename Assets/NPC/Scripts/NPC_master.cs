@@ -26,7 +26,6 @@ public class NPC_master : MonoBehaviour //for all the stats & bahaviour of the n
         searchingForSth, // where is object xy located?
         wantToBuy,// TODO nach goto register kann er buy oder traden
         hasQuestion, //TODO implement dialog system with choices
-        wantsAdvice, //TODO implement dialog system with choices
         justLooking, // default wert-> wenn man ihn dann anspricht sagte er "just looking"
         satisfied, // wenn er hier ist macht er sich dann los den laden zu verlassen & man bekommt punkte auf kundenzufriedenheit
         leaving,

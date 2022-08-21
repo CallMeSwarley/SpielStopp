@@ -47,6 +47,10 @@ public class InteractionManagerNPC : MonoBehaviour, Interactable
             {
                 Debug.Log("Lemme Buy!");//TODO start buy menu
             }
+            else if(npc_master.currentState == NPC_master.state.hasQuestion)
+            {
+                startDialog("Assets/Dialoge/justLookingDialogue.json");//TODO richtigen dialog einfügen
+            }
         }
     }
     public void endInteract()
