@@ -40,8 +40,10 @@ public class InteractionManagerNPC : MonoBehaviour, Interactable
     {
         npc_material.SetColor("_Color", Color.red);//select mode
         if (Input.GetMouseButtonDown(0))
-        {   
-            if(npc_master.currentState == NPC_master.state.justLooking)
+        {
+            cashRegister.npc_master = npc_master;
+            cashRegister.interactionManagerNPC = this;
+            if (npc_master.currentState == NPC_master.state.justLooking)
             {
                 story = createStory("Assets/Dialoge/justLookingDialogue.json");
                 startDialog(story);
@@ -92,23 +94,26 @@ public class InteractionManagerNPC : MonoBehaviour, Interactable
     }
     void startDialog(Story story,Action afterDialog=null)//path where the storyjson is
     {
-        if (!dialogMenu.gameObject.activeSelf&&story!=null)
+        if (!dialogMenu.gameObject.active&&story!=null)
         {
+            Debug.Log("startetdialog");
             Cursor.lockState = CursorLockMode.Confined;
             Cursor.visible = true;
             Time.timeScale = 0.00001f;
-            interactable = false;
+            this.interactable = false;
             dialogMenu.startDialog(this, story, afterDialog);
             dialogMenu.gameObject.SetActive(true);
         }
     }
-    public void endDialog(bool doAction, Action actionAfterDialog=null)
+    public IEnumerator endDialog(bool doAction, Action actionAfterDialog=null)
     {
-        dialogMenu.gameObject.SetActive(false);
         //dialogMenu.StartStory();
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         Time.timeScale = 1f;
+        yield return new WaitForSeconds(0.2f);
+        Debug.Log("endetdialog");
+        dialogMenu.gameObject.SetActive(false);
         interactable = true;
         if (doAction && actionAfterDialog != null)
         {

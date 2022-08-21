@@ -26,6 +26,7 @@ public class DialogMenu : MonoBehaviour
 		RemoveChildren();
 		StartStory();
 	}
+	
 	public void startDialog()
     {
 		RemoveChildren();
@@ -73,7 +74,7 @@ public class DialogMenu : MonoBehaviour
 		// If we've read all the content and there's no choices, the story is finished!
 		else
 		{
-				interactionManagerNPC.endDialog((bool)story.variablesState["positiveEnding"],actionAfterDialog);	
+			StartCoroutine(interactionManagerNPC.endDialog((bool)story.variablesState["positiveEnding"], actionAfterDialog));
 		}
 	}
 	// When we click the choice button, tell the story to choose that choice!

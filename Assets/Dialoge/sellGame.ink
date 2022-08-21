@@ -1,5 +1,5 @@
 VAR GameToSell = "GameTitle"
-VAR Price = 20
+VAR Price = 60
 VAR PurchasePrice = 0
 VAR boughtGame = false
 VAR positiveEnding =false
