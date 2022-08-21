@@ -73,10 +73,7 @@ public class DialogMenu : MonoBehaviour
 		// If we've read all the content and there's no choices, the story is finished!
 		else
 		{
-			Button choice = CreateChoiceView("Do sth. else");
-			choice.onClick.AddListener(delegate {
-				interactionManagerNPC.endDialog(actionAfterDialog);
-			});
+				interactionManagerNPC.endDialog(actionAfterDialog);	
 		}
 	}
 	// When we click the choice button, tell the story to choose that choice!
