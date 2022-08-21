@@ -8,7 +8,6 @@ public class KundenSpawner : MonoBehaviour
     float spawnCoolDown;
     [SerializeField]
     GameObject Customer;
-    Display_UI UI;
 
     private void Start()
     {
@@ -39,7 +38,7 @@ public class KundenSpawner : MonoBehaviour
 
     void nextSpawnIn()
     {
-        float i = UI.zufriedenheitsWert;
+        float i = Display_UI.zufriedenheitsWert;
         spawnCoolDown = 500 + (i * 5);   
     }
 }

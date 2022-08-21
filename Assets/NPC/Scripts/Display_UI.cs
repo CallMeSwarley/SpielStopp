@@ -6,8 +6,8 @@ using TMPro;
 
 public class Display_UI : MonoBehaviour
 {
-    public float geldWert = 0f;
-    public float zufriedenheitsWert=50f;
+    public static float geldWert = 0f;
+    public static float zufriedenheitsWert=50f;
     public TMP_Text geldAnzeige;
     public TMP_Text zufriedenheitsAnzeige;
     public CashRegister cashRegister;

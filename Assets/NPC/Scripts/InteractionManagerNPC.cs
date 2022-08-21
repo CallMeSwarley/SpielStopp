@@ -29,12 +29,6 @@ public class InteractionManagerNPC : MonoBehaviour, Interactable
         npc_material = myRenderer.material;
         
         originalColor = npc_material.GetColor("_Color");
-        /*
-        transformToFollow = GameObject.FindGameObjectWithTag("Player").transform;
-        dialogMenu = DialogMenu.FindObjectOfType<DialogMenu>();
-        cashRegister = CashRegister.FindObjectOfType<CashRegister>();
-        jaButton = GameObject.Find("JaButton").GetComponent<Button>();
-        */
 
     }
     // Allows interactables to decide if they are currently interactable

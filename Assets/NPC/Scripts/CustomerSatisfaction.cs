@@ -10,7 +10,6 @@ public class CustomerSatisfaction : MonoBehaviour
 
     public GameObject satisfactionBarUI;
     public Slider slider;
-    public Display_UI display_UI;
     public Image fill;
 
     float satisfactionLvl;
@@ -34,7 +33,7 @@ public class CustomerSatisfaction : MonoBehaviour
         if (npc_master.satisfactionLvl <= 0 && npc_master.currentState != NPC_master.state.leaving)
         {
             npc_master.currentState = NPC_master.state.leaving;
-            display_UI.zufriedenheitsWert -= 10f;
+            Display_UI.zufriedenheitsWert -= 10f;
         }
         if (npc_master.satisfactionLvl > maxSatisfaction)
         {
@@ -42,7 +41,7 @@ public class CustomerSatisfaction : MonoBehaviour
         }
         if (npc_master.currentState == NPC_master.state.satisfied && !receivedSatisfactionpoints)
         {
-            display_UI.zufriedenheitsWert += (int)(10f*val);
+            Display_UI.zufriedenheitsWert += (int)(10f*val);
             receivedSatisfactionpoints = true;
         }
     }

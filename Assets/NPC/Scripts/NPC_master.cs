@@ -41,10 +41,10 @@ public class NPC_master : MonoBehaviour //for all the stats & bahaviour of the n
     public state currentState;
     bool coroutineRunning;
     bool wantedGameNotHere = false;
-    // Start is called before the first frame update
+    [SerializeField]
     
     public int wantedGameId;
-    void Start()
+    void Awake()
     {
         satisfactionLvl = maxSatisfaction;
         currentState = state.arriving;// TODO: zukünftig random zuweisen & haswish nach random sek nach spawn aktivieren
@@ -58,6 +58,11 @@ public class NPC_master : MonoBehaviour //for all the stats & bahaviour of the n
         npc_material = myRenderer.material;
         originalColor = npc_material.GetColor("_Color");
         wantedGameId = selectWishedGame();
+
+        if (myRenderer.transform.position.x == 42) {
+            desatisfactionSpeed = 0;
+            Debug.Log("passed");
+        }
     }
 
     int selectWishedGame()
@@ -187,7 +192,6 @@ public class NPC_master : MonoBehaviour //for all the stats & bahaviour of the n
                 goToRegister();
                 break;
             case state.wantToBuy:
-                
                 break;
             case state.arriving:
                 goToRegister();
@@ -255,10 +259,6 @@ public class NPC_master : MonoBehaviour //for all the stats & bahaviour of the n
     {
         agent.destination = registerPos;
         float dist = agent.remainingDistance; 
-        if (dist != Mathf.Infinity && agent.pathStatus == NavMeshPathStatus.PathComplete && agent.remainingDistance == 0) {  
-            currentState = state.Idle;
-            Debug.Log("boop");
-        }
         
     }
 }
