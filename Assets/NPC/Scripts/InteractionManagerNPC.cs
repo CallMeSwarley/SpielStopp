@@ -5,6 +5,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.AI;
 using System;
+using UnityEngine.UI;
+using Ink.Runtime;
 
 
 public class InteractionManagerNPC : MonoBehaviour, Interactable
@@ -16,6 +18,10 @@ public class InteractionManagerNPC : MonoBehaviour, Interactable
     Renderer myRenderer;
     Color originalColor;
     public bool interactable = true;
+    public ProductDataManager productDataManager;
+    public CashRegister cashRegister;
+    public Button jaButton;
+    Story story;
     // Start is called before the first frame update
     void Start()
     {
@@ -37,43 +43,74 @@ public class InteractionManagerNPC : MonoBehaviour, Interactable
         {   
             if(npc_master.currentState == NPC_master.state.justLooking)
             {
-                startDialog("Assets/Dialoge/justLookingDialogue.json");
+                story = createStory("Assets/Dialoge/justLookingDialogue.json");
+                startDialog(story);
+               
             }
             else if (npc_master.currentState == NPC_master.state.searchingForSth)
             {
-                startDialog("Assets/Dialoge/justLookingDialogue.json", npc_master.onClickFollow);
+                story = createStory("Assets/Dialoge/helpMeLook.json");
+                story.variablesState["lookingFor"] = productDataManager.getTitle(npc_master.wantedGameId);
+                startDialog(story, npc_master.onClickFollow);
             }
             else if(npc_master.currentState == NPC_master.state.wantToBuy)
             {
-                Debug.Log("Lemme Buy!");//TODO start buy menu
+                story = createStory("Assets/Dialoge/buyGame.json");
+                story.variablesState["GameTitle"] = productDataManager.getTitle(npc_master.wantedGameId);
+                jaButton.onClick.AddListener(delegate {
+                    cashRegister.sellGame();
+                });
+                startDialog(story, cashRegister.enterRegister);//kassenmenü öffnen
+            }
+            else if (npc_master.currentState == NPC_master.state.wantToSell)
+            {
+                story = createStory("Assets/Dialoge/sellGame.json");
+                story.variablesState["GameToSell"] = productDataManager.getTitle(npc_master.wantedGameId);
+                jaButton.onClick.AddListener(delegate {
+                    cashRegister.buyGame();
+                });
+                startDialog(story,cashRegister.enterRegister);//kassenmenü öffnen
             }
         }
+    }
+    Story createStory(String path)
+    {
+        TextAsset textAsset = (TextAsset)AssetDatabase.LoadAssetAtPath(path, typeof(TextAsset));
+        if (textAsset!=null)
+        {
+            return new Story(textAsset.text);
+        }
+        else
+        {
+            Debug.Log("Couldnt find story at this path: "+path);
+            return null;
+        }        
     }
     public void endInteract()
     {
         npc_material.SetColor("_Color", originalColor);//exit select mode
     }
-    void startDialog(String path,Action afterDialog=null)//path where the storyjson is
+    void startDialog(Story story,Action afterDialog=null)//path where the storyjson is
     {
-        if (!dialogMenu.gameObject.activeSelf)
+        if (!dialogMenu.gameObject.activeSelf&&story!=null)
         {
             Cursor.lockState = CursorLockMode.Confined;
             Cursor.visible = true;
             Time.timeScale = 0.00001f;
             interactable = false;
-            dialogMenu.startDialog(this, path, afterDialog);
+            dialogMenu.startDialog(this, story, afterDialog);
             dialogMenu.gameObject.SetActive(true);
         }
     }
-    public void endDialog(Action actionAfterDialog=null)
+    public void endDialog(bool doAction, Action actionAfterDialog=null)
     {
         dialogMenu.gameObject.SetActive(false);
-        dialogMenu.StartStory();
+        //dialogMenu.StartStory();
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         Time.timeScale = 1f;
         interactable = true;
-        if (actionAfterDialog != null)
+        if (doAction && actionAfterDialog != null)
         {
             actionAfterDialog();
         }

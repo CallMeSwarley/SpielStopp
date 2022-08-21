@@ -2,10 +2,12 @@ VAR GameToSell = "GameTitle"
 VAR Price = 20
 VAR PurchasePrice = 0
 VAR boughtGame = false
+VAR positiveEnding =false
 Hello. Would you like to buy my copy of {GameToSell} for {Price}$
     + "Sounds like a deal!"
         ~PurchasePrice = Price
         ~boughtGame = true
+        ~positiveEnding = true
         Wonderful!
     + "Maybe if you lower the price a bit..."
         ~Price-=5
@@ -26,6 +28,7 @@ Hello. Would you like to buy my copy of {GameToSell} for {Price}$
     + "Sounds like a deal!"
         ~PurchasePrice = Price
         ~boughtGame = true
+        ~positiveEnding = true
         Wonderful!
         ->END
     + "Maybe if you lower the price a bit..."

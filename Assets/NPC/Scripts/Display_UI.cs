@@ -10,12 +10,13 @@ public class Display_UI : MonoBehaviour
     public float zufriedenheitsWert=50f;
     public TMP_Text geldAnzeige;
     public TMP_Text zufriedenheitsAnzeige;
-
+    public CashRegister cashRegister;
     private float maxSatisfaction = 100f;
     private float minSatisfaction = 0f;
     // Update is called once per frame
     void Update()
     {
+        geldWert = cashRegister.geld;
         if (zufriedenheitsWert > maxSatisfaction)
         {
             zufriedenheitsWert = maxSatisfaction;

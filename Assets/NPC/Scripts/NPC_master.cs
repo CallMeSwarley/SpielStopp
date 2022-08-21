@@ -24,9 +24,8 @@ public class NPC_master : MonoBehaviour //for all the stats & bahaviour of the n
     public enum state 
     {
         searchingForSth, // where is object xy located?
-        wantToBuy,// TODO nach goto register kann er buy oder traden
-        hasQuestion, //TODO implement dialog system with choices
-        wantsAdvice, //TODO implement dialog system with choices
+        wantToBuy,
+        wantToSell,
         justLooking, // default wert-> wenn man ihn dann anspricht sagte er "just looking"
         satisfied, // wenn er hier ist macht er sich dann los den laden zu verlassen & man bekommt punkte auf kundenzufriedenheit
         leaving,
@@ -42,13 +41,13 @@ public class NPC_master : MonoBehaviour //for all the stats & bahaviour of the n
     bool wantedGameNotHere = false;
     // Start is called before the first frame update
     
-    int wantedGameId;
+    public int wantedGameId;
     void Start()
     {
         currentState = state.justLooking;// TODO: zukünftig random zuweisen & haswish nach random sek nach spawn aktivieren
         coroutineRunning = false;
         receivesHelp = false;
-        registerPos = new Vector3(-13, 1.55f, -2);
+        registerPos = new Vector3(-42, 1.55f, -15);
         leavingPos = new Vector3(-5, 1.55f, -60);
         goalPos = new Vector3(5, 5, -2);
         agent = GetComponent<NavMeshAgent>();
@@ -181,6 +180,12 @@ public class NPC_master : MonoBehaviour //for all the stats & bahaviour of the n
                 hasWish = false;
                 currentState = state.leaving;
                 break;
+            case state.wantToSell:
+                goToRegister();
+                break;
+            case state.wantToBuy:
+                goToRegister();
+                break;
             default:
                 agent.destination = transform.position;
                 break;
@@ -230,10 +235,9 @@ public class NPC_master : MonoBehaviour //for all the stats & bahaviour of the n
         agent.stoppingDistance = 3;
         npc_material.SetColor("_Color", Color.blue);
         agent.destination = transformToFollow.position;
-        if (transform.position.x <= goalPos.x + 0.2 && transform.position.x >= goalPos.x - 0.2 &&
+        if (transform.position.x <= goalPos.x + 0.2 && transform.position.x >= goalPos.x - 0.2 &&//TODO coordinaten vom gesuchten game einfügen
             transform.position.y <= goalPos.y + 0.2 && transform.position.y >= goalPos.y - 0.2 &&
             transform.position.z <= goalPos.z + 0.2 && transform.position.z >= goalPos.z - 0.2)
-        //bin am zielort(mit radius) angekommen
         {
             followPlayer = false;
             currentState = state.gotoRegister;
@@ -244,9 +248,9 @@ public class NPC_master : MonoBehaviour //for all the stats & bahaviour of the n
     private void goToRegister()
     {
         agent.destination = registerPos;
-        if (transform.position.x == registerPos.x && transform.position.z == registerPos.z)
-        {
-            currentState = state.wantToBuy;
-        }
+        //if (transform.position.x == registerPos.x && transform.position.z == registerPos.z)
+        //{
+        //    currentState = state.wantToBuy;
+        //}
     }
 }
