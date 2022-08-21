@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Probuilder.unity
     guid: 52541382e232aec40b409008f1bebf7c
+  - enabled: 1
+    path: Assets/Scenes/SpielStop.unity
+    guid: 95f69cc63f4e98a468e9af42b249768a
   m_configObjects: {}
