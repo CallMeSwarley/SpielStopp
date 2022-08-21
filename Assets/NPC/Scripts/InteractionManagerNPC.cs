@@ -12,7 +12,7 @@ using Ink.Runtime;
 public class InteractionManagerNPC : MonoBehaviour, Interactable
 {
     public NPC_master npc_master;
-    public Transform transformToFollow;
+    Transform transformToFollow;
     public DialogMenu dialogMenu;
     Material npc_material;
     Renderer myRenderer;
@@ -29,6 +29,7 @@ public class InteractionManagerNPC : MonoBehaviour, Interactable
         myRenderer = GetComponent<Renderer>();
         npc_material = myRenderer.material;
         originalColor = npc_material.GetColor("_Color");
+        transformToFollow = GetComponent<FirstPersonController>();
     }
     // Allows interactables to decide if they are currently interactable
     public bool IsCurrentlyInteractable()
