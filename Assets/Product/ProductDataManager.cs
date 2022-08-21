@@ -29,11 +29,9 @@ public class ProductDataManager : MonoBehaviour
             Genre1Data.Add(getGenre(product.genre1));
             Genre2Data.Add(getGenre(product.genre2));
             RatingData.Add(product.rating);
-            Debug.Log(product.rating);
             TrendData.Add(product.trend);
             maxIndex++;
         }
-        Debug.Log("Updated");
     }
 
     void OnApplicationQuit()
