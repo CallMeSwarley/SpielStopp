@@ -24,6 +24,7 @@ public class ShelvesBehavior : MonoBehaviour
         var BobTheStringBuilder = new System.Text.StringBuilder();
         foreach (int ID in Inventory) {
             BobTheStringBuilder.Append(ProductDataManager.TitleData[ID]);
+            BobTheStringBuilder.Append("\n");
         }
         return BobTheStringBuilder.ToString();
     }
