@@ -5,6 +5,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.AI;
 using System;
+using UnityEngine.UI;
 using Ink.Runtime;
 
 
@@ -18,6 +19,8 @@ public class InteractionManagerNPC : MonoBehaviour, Interactable
     Color originalColor;
     public bool interactable = true;
     public ProductDataManager productDataManager;
+    public CashRegister cashRegister;
+    public Button jaButton;
     Story story;
     // Start is called before the first frame update
     void Start()
@@ -54,13 +57,19 @@ public class InteractionManagerNPC : MonoBehaviour, Interactable
             {
                 story = createStory("Assets/Dialoge/buyGame.json");
                 story.variablesState["GameTitle"] = productDataManager.getTitle(npc_master.wantedGameId);
-                startDialog(story);//kassenmenü öffnen
+                jaButton.onClick.AddListener(delegate {
+                    cashRegister.sellGame();
+                });
+                startDialog(story, cashRegister.enterRegister);//kassenmenü öffnen
             }
             else if (npc_master.currentState == NPC_master.state.wantToSell)
             {
                 story = createStory("Assets/Dialoge/sellGame.json");
                 story.variablesState["GameToSell"] = productDataManager.getTitle(npc_master.wantedGameId);
-                startDialog(story);//kassenmenü öffnen
+                jaButton.onClick.AddListener(delegate {
+                    cashRegister.buyGame();
+                });
+                startDialog(story,cashRegister.enterRegister);//kassenmenü öffnen
             }
         }
     }
