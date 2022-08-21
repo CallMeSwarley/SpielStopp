@@ -23,13 +23,15 @@ public class NPC_master : MonoBehaviour //for all the stats & bahaviour of the n
     [HideInInspector]
     public enum state 
     {
+        arriving,
         searchingForSth, // where is object xy located?
         wantToBuy,
         wantToSell,
         justLooking, // default wert-> wenn man ihn dann anspricht sagte er "just looking"
         satisfied, // wenn er hier ist macht er sich dann los den laden zu verlassen & man bekommt punkte auf kundenzufriedenheit
         leaving,
-        gotoRegister
+        gotoRegister,
+        Idle
     }
     NavMeshAgent agent;
     Material npc_material;
@@ -44,7 +46,8 @@ public class NPC_master : MonoBehaviour //for all the stats & bahaviour of the n
     public int wantedGameId;
     void Start()
     {
-        currentState = state.justLooking;// TODO: zukünftig random zuweisen & haswish nach random sek nach spawn aktivieren
+        satisfactionLvl = maxSatisfaction;
+        currentState = state.arriving;// TODO: zukünftig random zuweisen & haswish nach random sek nach spawn aktivieren
         coroutineRunning = false;
         receivesHelp = false;
         registerPos = new Vector3(-42, 1.55f, -15);
@@ -82,7 +85,6 @@ public class NPC_master : MonoBehaviour //for all the stats & bahaviour of the n
         //Kunde will nur spiele mit Rating 4-5
         for (int i = 0; i < ProductDataManager.RatingData.Count; i++)
         {
-            Debug.Log(i);
             if (ProductDataManager.RatingData[i] >= 4)
             {
                 PotentialGames.Add(i);
@@ -123,7 +125,6 @@ public class NPC_master : MonoBehaviour //for all the stats & bahaviour of the n
         //Kunde will nur spiele mit Trend 4-5
         for (int i = 0; i < ProductDataManager.Genre1Data.Count; i++)
         {
-            Debug.Log(i);
             if (ProductDataManager.Genre1Data[i] == wanted || ProductDataManager.Genre2Data[i] == wanted)
             {
                 PotentialGames.Add(i);
@@ -160,6 +161,9 @@ public class NPC_master : MonoBehaviour //for all the stats & bahaviour of the n
         hasWish = (currentState == state.justLooking || currentState == state.leaving || currentState == state.gotoRegister) ? false : true;
 
         switch (currentState) {
+            case state.Idle:
+                npc_material.SetColor("_Color", Color.blue);
+                break;
             case state.leaving:
                 leaveStore();
                 break;
@@ -183,6 +187,9 @@ public class NPC_master : MonoBehaviour //for all the stats & bahaviour of the n
                 goToRegister();
                 break;
             case state.wantToBuy:
+                
+                break;
+            case state.arriving:
                 goToRegister();
                 break;
             default:
@@ -247,9 +254,11 @@ public class NPC_master : MonoBehaviour //for all the stats & bahaviour of the n
     private void goToRegister()
     {
         agent.destination = registerPos;
-        //if (transform.position.x == registerPos.x && transform.position.z == registerPos.z)
-        //{
-        //    currentState = state.wantToBuy;
-        //}
+        float dist = agent.remainingDistance; 
+        if (dist != Mathf.Infinity && agent.pathStatus == NavMeshPathStatus.PathComplete && agent.remainingDistance == 0) {  
+            currentState = state.Idle;
+            Debug.Log("boop");
+        }
+        
     }
 }
