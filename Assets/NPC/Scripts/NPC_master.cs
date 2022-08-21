@@ -48,7 +48,7 @@ public class NPC_master : MonoBehaviour //for all the stats & bahaviour of the n
         coroutineRunning = false;
         receivesHelp = false;
         registerPos = new Vector3(-42, 1.55f, -15);
-        leavingPos = new Vector3(-42, 1.55f, -30);
+        leavingPos = new Vector3(-40, 1.55f, -20);
         goalPos = new Vector3(5, 5, -2);
         agent = GetComponent<NavMeshAgent>();
         myRenderer = GetComponent<Renderer>();
