@@ -12,15 +12,16 @@ public class DialogMenu : MonoBehaviour
 	private TextAsset inkJSONAsset;
 	private Action actionAfterDialog=null;
 
-	public void startDialog(InteractionManagerNPC interactionManagerNPC, String pathToJSON, Action actionAfterDialog = null)
+	public void startDialog(InteractionManagerNPC interactionManagerNPC, Story story, Action actionAfterDialog = null)
     {
+		this.story = story;
 		this.interactionManagerNPC = interactionManagerNPC;
-		inkJSONAsset = (TextAsset)AssetDatabase.LoadAssetAtPath(pathToJSON, typeof(TextAsset));
         if (actionAfterDialog != null) { this.actionAfterDialog = actionAfterDialog; }
-        if (inkJSONAsset == null)//default dialog
+        if (story == null)//default dialog
         {
 			Debug.Log("Couldn't find dialog -> using default");
-			inkJSONAsset = (TextAsset)AssetDatabase.LoadAssetAtPath("Assets/Dialoge/justLookingDialogue.json", typeof(TextAsset));
+			TextAsset ta = (TextAsset)AssetDatabase.LoadAssetAtPath("Assets/Dialoge/justLookingDialogue.json", typeof(TextAsset));
+			this.story = new Story(ta.text);
 		}
 		RemoveChildren();
 		StartStory();
@@ -33,7 +34,6 @@ public class DialogMenu : MonoBehaviour
 	// Creates a new Story object with the compiled story which we can then play!
 	public void StartStory()
 	{
-		story = new Story(inkJSONAsset.text);
 		if (OnCreateStory != null) OnCreateStory(story);
 		RefreshView();
 	}
@@ -73,7 +73,7 @@ public class DialogMenu : MonoBehaviour
 		// If we've read all the content and there's no choices, the story is finished!
 		else
 		{
-				interactionManagerNPC.endDialog(actionAfterDialog);	
+				interactionManagerNPC.endDialog((bool)story.variablesState["positiveEnding"],actionAfterDialog);	
 		}
 	}
 	// When we click the choice button, tell the story to choose that choice!
