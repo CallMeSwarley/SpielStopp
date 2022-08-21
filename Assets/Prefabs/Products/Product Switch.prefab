@@ -1,0 +1,63 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &272002711062873752
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 179354228706475620, guid: a6f10ef96f0234241817df7d053f33c9, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: ff129ea1258f0a84a9c8618055ef8db8, type: 2}
+    - target: {fileID: 1441029798327440098, guid: a6f10ef96f0234241817df7d053f33c9, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1441029798327440098, guid: a6f10ef96f0234241817df7d053f33c9, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -53.099987
+      objectReference: {fileID: 0}
+    - target: {fileID: 1441029798327440098, guid: a6f10ef96f0234241817df7d053f33c9, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 5.4509697
+      objectReference: {fileID: 0}
+    - target: {fileID: 1441029798327440098, guid: a6f10ef96f0234241817df7d053f33c9, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -9.727458
+      objectReference: {fileID: 0}
+    - target: {fileID: 1441029798327440098, guid: a6f10ef96f0234241817df7d053f33c9, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1441029798327440098, guid: a6f10ef96f0234241817df7d053f33c9, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1441029798327440098, guid: a6f10ef96f0234241817df7d053f33c9, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1441029798327440098, guid: a6f10ef96f0234241817df7d053f33c9, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1441029798327440098, guid: a6f10ef96f0234241817df7d053f33c9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1441029798327440098, guid: a6f10ef96f0234241817df7d053f33c9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1441029798327440098, guid: a6f10ef96f0234241817df7d053f33c9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1780118516108560472, guid: a6f10ef96f0234241817df7d053f33c9, type: 3}
+      propertyPath: m_Name
+      value: Product XBox (3)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: a6f10ef96f0234241817df7d053f33c9, type: 3}
