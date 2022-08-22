@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.49802762, g: 0.5465459, b: 0.59272194, a: 1}
+  m_IndirectSpecularColor: {r: 0.4980523, g: 0.5465324, b: 0.59289265, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -7482,7 +7482,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 572, y: 0}
+  m_AnchoredPosition: {x: 560.5, y: 0}
   m_SizeDelta: {x: 365, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &115389704
@@ -12751,7 +12751,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 977462030525978068, guid: dfddf7b575ed0694d9e017986932f2c2, type: 3}
       propertyPath: m_Name
-      value: tton3
+      value: BuyButton3
       objectReference: {fileID: 0}
     - target: {fileID: 1557632283508691379, guid: dfddf7b575ed0694d9e017986932f2c2, type: 3}
       propertyPath: m_Pivot.x
@@ -12855,7 +12855,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6022330127204582644, guid: dfddf7b575ed0694d9e017986932f2c2, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 286
+      value: 174.51
       objectReference: {fileID: 0}
     - target: {fileID: 6022330127204582644, guid: dfddf7b575ed0694d9e017986932f2c2, type: 3}
       propertyPath: m_SizeDelta.y
@@ -12863,7 +12863,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6022330127204582644, guid: dfddf7b575ed0694d9e017986932f2c2, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 0.001112
       objectReference: {fileID: 0}
     - target: {fileID: 6022330127204582644, guid: dfddf7b575ed0694d9e017986932f2c2, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -13573,7 +13573,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   npc_master: {fileID: 0}
   interactionManagerNPC: {fileID: 0}
-  geld: 0
 --- !u!1 &234346897
 GameObject:
   m_ObjectHideFlags: 0
@@ -16936,7 +16935,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6022330127204582644, guid: dfddf7b575ed0694d9e017986932f2c2, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 286
+      value: 174.51
       objectReference: {fileID: 0}
     - target: {fileID: 6022330127204582644, guid: dfddf7b575ed0694d9e017986932f2c2, type: 3}
       propertyPath: m_SizeDelta.y
@@ -16944,7 +16943,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6022330127204582644, guid: dfddf7b575ed0694d9e017986932f2c2, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 0.001112
       objectReference: {fileID: 0}
     - target: {fileID: 6022330127204582644, guid: dfddf7b575ed0694d9e017986932f2c2, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -16955,6 +16954,18 @@ PrefabInstance:
       value: 'Buy
 
 '
+      objectReference: {fileID: 0}
+    - target: {fileID: 8848806052760131561, guid: dfddf7b575ed0694d9e017986932f2c2, type: 3}
+      propertyPath: m_fontSize
+      value: 47.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8848806052760131561, guid: dfddf7b575ed0694d9e017986932f2c2, type: 3}
+      propertyPath: m_margin.x
+      value: -3.9935303
+      objectReference: {fileID: 0}
+    - target: {fileID: 8848806052760131561, guid: dfddf7b575ed0694d9e017986932f2c2, type: 3}
+      propertyPath: m_margin.z
+      value: -11.980591
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dfddf7b575ed0694d9e017986932f2c2, type: 3}
@@ -75195,7 +75206,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1404747918
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -76390,7 +76401,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   geldAnzeige: {fileID: 2038067307}
   zufriedenheitsAnzeige: {fileID: 1104919099}
-  cashRegister: {fileID: 0}
 --- !u!114 &1426568044
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -79616,7 +79626,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6022330127204582644, guid: dfddf7b575ed0694d9e017986932f2c2, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 286
+      value: 174.51
       objectReference: {fileID: 0}
     - target: {fileID: 6022330127204582644, guid: dfddf7b575ed0694d9e017986932f2c2, type: 3}
       propertyPath: m_SizeDelta.y
@@ -79624,7 +79634,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6022330127204582644, guid: dfddf7b575ed0694d9e017986932f2c2, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 0.001112
       objectReference: {fileID: 0}
     - target: {fileID: 6022330127204582644, guid: dfddf7b575ed0694d9e017986932f2c2, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -82044,7 +82054,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 572, y: 0}
+  m_AnchoredPosition: {x: 560.5, y: 0}
   m_SizeDelta: {x: 346, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1542820027
@@ -97326,7 +97336,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 572, y: 0}
+  m_AnchoredPosition: {x: 560.5, y: 0}
   m_SizeDelta: {x: 1027, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1862958783
@@ -107877,7 +107887,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   geldAnzeige: {fileID: 2091386158}
   zufriedenheitsAnzeige: {fileID: 1350638747}
-  cashRegister: {fileID: 233415270}
 --- !u!114 &2047882100
 MonoBehaviour:
   m_ObjectHideFlags: 0
