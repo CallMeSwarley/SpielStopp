@@ -22,13 +22,17 @@ public class InteractionManagerNPC : MonoBehaviour, Interactable
     public CashRegister cashRegister;
     public Button jaButton;
     Story story;
+    [SerializeField]
+    GameObject PC;
+    RestockPC buyer;
+
     // Start is called before the first frame update
     void Awake()
     {
         dialogMenu.gameObject.SetActive(false);
         myRenderer = GetComponent<Renderer>();
         npc_material = myRenderer.material;
-        
+        buyer = PC.GetComponent<RestockPC>();
         originalColor = npc_material.GetColor("_Color");
 
     }
@@ -75,12 +79,14 @@ public class InteractionManagerNPC : MonoBehaviour, Interactable
                 story.variablesState["Price"] = preis;
                 cashRegister.price = preis;
                 startDialog(story, cashRegister.buyGame);//kassenmenü öffnen
-                
-                //cashRegister.buyGame(preis);
-                
+ 
                 
             }
         }
+    }
+
+    void GoodEnding() { 
+    
     }
     Story createStory(String path)
     {
