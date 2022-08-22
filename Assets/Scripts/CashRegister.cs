@@ -40,7 +40,7 @@ public class CashRegister : MonoBehaviour
         }
         Debug.Log(price);
         geld -= price;
-        buyer.BuyGame(buyID);
+        buyer.BuyUsed(buyID);
         
 
     }

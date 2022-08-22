@@ -11,21 +11,19 @@ public class KundenSpawner : MonoBehaviour
 
     private void Start()
     {
-        spawnCoolDown = 750;
-        spawntimer = 0;
+
+        spawnCustomer();
+
     }
     
     void Update()
     {
-        /*spawntimer++;
+       spawntimer++;
             if (spawntimer >= spawnCoolDown)
             {
-            spawnCustomer();
-         }
-        */
-        if (Input.GetKeyDown("space")){
-            spawnCustomer();
-        }
+                spawnCustomer();
+            }
+        
     }
 
     void spawnCustomer()
@@ -39,6 +37,6 @@ public class KundenSpawner : MonoBehaviour
     void nextSpawnIn()
     {
         float i = Display_UI.zufriedenheitsWert;
-        spawnCoolDown = 500 + (i * 5);   
+        spawnCoolDown = 350 + (i * 5);   
     }
 }

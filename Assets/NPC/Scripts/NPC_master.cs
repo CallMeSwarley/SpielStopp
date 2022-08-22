@@ -76,9 +76,8 @@ public class NPC_master : MonoBehaviour //for all the stats & bahaviour of the n
     }
 
     type SelectType(){
-        return type.Seller;
-        int random = UnityEngine.Random.Range(0, 4);
-        if (random <= 0)
+        int random = UnityEngine.Random.Range(0, 7);
+        if (random == 4)
         {
             return type.Seller;
         }

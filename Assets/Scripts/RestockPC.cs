@@ -73,6 +73,7 @@ public class RestockPC : MonoBehaviour, Interactable
         Cursor.lockState = CursorLockMode.Confined;
         Cursor.visible = true;
         Time.timeScale = 0.00001f;//freezes time in game
+        CashRegister.geld -= 35;
         BuyMenuUI.SetActive(false);
         switch (ID) {
             case 1:
@@ -86,6 +87,16 @@ public class RestockPC : MonoBehaviour, Interactable
                 ToStock = GameThreeID;
                 break;
         }
+        ShelfMenuUI.SetActive(true);
+    }
+
+    public void BuyUsed(int ID)
+    {
+        Cursor.lockState = CursorLockMode.Confined;
+        Cursor.visible = true;
+        Time.timeScale = 0.00001f;//freezes time in game
+        BuyMenuUI.SetActive(false);
+        ToStock = ID;
         ShelfMenuUI.SetActive(true);
     }
 
