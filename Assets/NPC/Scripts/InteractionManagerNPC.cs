@@ -61,8 +61,8 @@ public class InteractionManagerNPC : MonoBehaviour, Interactable
             {
                 story = createStory("Assets/Dialoge/buyGame.json");
                 story.variablesState["GameTitle"] = ProductDataManager.TitleData[npc_master.wantedGameId];
-                startDialog(story);
-                cashRegister.sellGame();
+                startDialog(story, cashRegister.sellGame);
+                //cashRegister.sellGame();
                 
                 Debug.Log(npc_master.currentState);
             }

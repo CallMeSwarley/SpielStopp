@@ -41,6 +41,7 @@ public class CustomerSatisfaction : MonoBehaviour
         }
         if (npc_master.currentState == NPC_master.state.satisfied && !receivedSatisfactionpoints)
         {
+            Debug.Log("Receives points");
             Display_UI.zufriedenheitsWert += (int)(10f*val);
             receivedSatisfactionpoints = true;
         }
