@@ -63,14 +63,19 @@ public class InteractionManagerNPC : MonoBehaviour, Interactable
                 story.variablesState["GameTitle"] = ProductDataManager.TitleData[npc_master.wantedGameId];
                 startDialog(story, cashRegister.sellGame);
                 //cashRegister.sellGame();
-                
+                endDialog(true);
                 Debug.Log(npc_master.currentState);
             }
             else if (npc_master.currentState == NPC_master.state.wantToSell)
             {
                 story = createStory("Assets/Dialoge/sellGame.json");
-                story.variablesState["GameToSell"] = ProductDataManager.TitleData[npc_master.wantedGameId];
+                int randomGameID = UnityEngine.Random.Range(0, ProductDataManager.TitleData.Count - 1);
+                story.variablesState["GameToSell"] = ProductDataManager.TitleData[randomGameID];
+                int preis = (ProductDataManager.TrendData[randomGameID] + ProductDataManager.RatingData[randomGameID]) * 3;
+                story.variablesState["Price"] = preis;
                 startDialog(story);//kassenmenü öffnen
+
+                
             }
         }
     }

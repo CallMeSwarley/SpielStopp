@@ -20,6 +20,8 @@ public class NPC_master : MonoBehaviour //for all the stats & bahaviour of the n
     public Vector3 goalPos;// wenn er was sucht dann hier die zielcoords angeben
     public Vector3 leavingPos;
     public Vector3 registerPos;
+    private int movementTTL;
+    private int movetime;
     [HideInInspector]
     public enum state
     {
@@ -66,6 +68,7 @@ public class NPC_master : MonoBehaviour //for all the stats & bahaviour of the n
         originalColor = npc_material.GetColor("_Color");
         wantedGameId = selectWishedGame();
         kundenType = SelectType();
+        movementTTL = 500 + UnityEngine.Random.Range(0, 500);
         if (myRenderer.transform.position.x == 42) {
             desatisfactionSpeed = 0;
         }
@@ -74,7 +77,7 @@ public class NPC_master : MonoBehaviour //for all the stats & bahaviour of the n
     }
 
     type SelectType(){
-        return type.Know;
+        return type.Seller;
         int random = UnityEngine.Random.Range(0, 5);
         if (random <= 1) {
             return type.Know;
@@ -185,7 +188,7 @@ public class NPC_master : MonoBehaviour //for all the stats & bahaviour of the n
         
         agent.stoppingDistance = 0;
         hasWish = (currentState == state.justLooking || currentState == state.leaving || currentState == state.gotoRegister || currentState==state.arriving) ? false : true;
-        
+        Debug.Log(currentState);
         
         switch (currentState) {
             case state.arriving:
@@ -214,8 +217,7 @@ public class NPC_master : MonoBehaviour //for all the stats & bahaviour of the n
                 break;
             case state.satisfied:
                 hasWish = false;
-                Debug.Log("satisfied");
-                //currentState = state.leaving;
+                currentState = state.leaving;
                 break;
             case state.wantToSell:
                 goToRegister();
@@ -338,26 +340,27 @@ public class NPC_master : MonoBehaviour //for all the stats & bahaviour of the n
     private void Wander() {
         Debug.Log("I want " + ProductDataManager.TitleData[wantedGameId]);
         agent.destination = goalPos;
+        
         foreach(GameObject Check in Shelves){
             if (Check.GetComponent<ShelvesBehavior>().takeGame(wantedGameId) == true){
                 wantedGameNotHere = false;
                 break;
             }
         }
-        StartCoroutine(Pause());
+
+        movetime++;
+        if (movetime >= movementTTL){
+            if (wantedGameNotHere)
+            {
+                currentState = state.leaving;
+            }
+            else
+            {
+                currentState = state.wantToBuy;
+                goToRegister();
+            }
+        }
 
     }
-    IEnumerator Pause() {
-        int random = UnityEngine.Random.Range(0, 21);
-        yield return new WaitForSeconds(10 + random);
-        if (wantedGameNotHere)
-        {
-            currentState = state.leaving;
-        }
-        else
-        {
-            currentState = state.wantToBuy;
-            goToRegister();
-        }
-    }
+    
 }

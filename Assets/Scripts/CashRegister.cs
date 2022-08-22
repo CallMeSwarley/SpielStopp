@@ -11,7 +11,7 @@ public class CashRegister : MonoBehaviour
     void Start()
     {
         gameObject.SetActive(false);
-        geld = 3000f;
+        geld = 500f;
     }
 
     // Update is called once per frame
