@@ -72,6 +72,7 @@ public class NPC_master : MonoBehaviour //for all the stats & bahaviour of the n
     }
 
     type SelectType(){
+        return type.Know;
         int random = UnityEngine.Random.Range(0, 5);
         if (random <= 1) {
             return type.Know;
@@ -184,6 +185,12 @@ public class NPC_master : MonoBehaviour //for all the stats & bahaviour of the n
         hasWish = (currentState == state.justLooking || currentState == state.leaving || currentState == state.gotoRegister || currentState==state.arriving) ? false : true;
 
         switch (currentState) {
+            case state.arriving:
+                enterStore();
+                break;
+            case state.justLooking:
+                wander();
+                break;
             case state.Idle:
                 npc_material.SetColor("_Color", Color.blue);
                 break;
@@ -212,9 +219,7 @@ public class NPC_master : MonoBehaviour //for all the stats & bahaviour of the n
             case state.wantToBuy:
                 goToRegister();
                 break;
-            case state.arriving:
-                enterStore();
-                break;
+            
             default:
                 agent.destination = transform.position;
                 break;
@@ -294,7 +299,29 @@ public class NPC_master : MonoBehaviour //for all the stats & bahaviour of the n
             switch (kundenType) {
                 case type.Know:
                     Debug.Log("look");
-                        currentState=state.justLooking;
+                    int random = UnityEngine.Random.Range(0, 5);
+                    switch (random)
+                    {
+                        case 0:
+                            goalPos = new Vector3(-51.887f, 5.113f, -12.748f);
+                            break;
+                        case 1:
+                            goalPos = new Vector3(-24.636f, 5.113f, -16.347f);
+                            break;
+                        case 2:
+                            goalPos = new Vector3(-33 - 906f, 1.514f, -7.506f);
+                            break;
+                        case 3:
+                            goalPos = new Vector3(-52.997f, 1.514f, -11.028f);
+                            break;
+                        case 4:
+                            goalPos = new Vector3(-26.963f, 1.514f, -12.386f);
+                            break;
+                        default:
+                            goalPos = new Vector3(-28, 4.235f, -9.24f);
+                            break;
+                    }
+                    currentState =state.justLooking;
                     break;
                 case type.Quiz:
                     Debug.Log("search");
@@ -307,5 +334,10 @@ public class NPC_master : MonoBehaviour //for all the stats & bahaviour of the n
                     
             } 
         }
+    }
+
+    private void wander() {
+        agent.destination = goalPos;
+
     }
 }

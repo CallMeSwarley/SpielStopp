@@ -7,10 +7,11 @@ using UnityEngine.AI;
 using System;
 using UnityEngine.UI;
 using Ink.Runtime;
-
+using System.IO;
 
 public class InteractionManagerNPC : MonoBehaviour, Interactable
 {
+    [SerializeField]
     public NPC_master npc_master;
     Transform transformToFollow;
     public DialogMenu dialogMenu;
@@ -46,7 +47,6 @@ public class InteractionManagerNPC : MonoBehaviour, Interactable
             cashRegister.interactionManagerNPC = this;
             if (npc_master.currentState == NPC_master.state.justLooking)
             {
-                Debug.Log("Geschichtn ausm Paulanergarten");
                 story = createStory("Assets/Dialoge/justLookingDialogue.json");
                 startDialog(story);
             }
