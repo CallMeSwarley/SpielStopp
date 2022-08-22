@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657874, g: 0.4964127, b: 0.5748172, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -239,7 +239,7 @@ RectTransform:
   m_GameObject: {fileID: 619937038}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.1503, y: 1.1503, z: 1.1503}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2022101554}
@@ -247,7 +247,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 248.80585, y: -3.7894}
+  m_AnchoredPosition: {x: 432, y: -98.00061}
   m_SizeDelta: {x: 497.6117, y: 562.42}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &619937040
@@ -270,14 +270,13 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\"rating\": X, (hier f\xFCr \"X\" einen Wert von 1-5 einsetzen)\r\n\t\t\"trend\":
-    X (hier f\xFCr \"X\" einen Wert von 1-5 einsetzen)\r\n\td) Aktuell stehen folgende
-    Genres zur Auswahl: (wird noch erweitert)\r\n\t\tNone,Action,Adventure,Arcade,\r\n\t\tFighting,FPS,Koop,\r\n\t\tMOBA,Puzzle,Racing,\r\n\t\tRTS,RPG,Sandbox,Sports\r\n\te)
-    zwischen Produkten muss ein Komma gesetzt werden.\r\nEin Beispiel f\xFCr ein
-    Produkt w\xE4re daher folgendes:\r\n    {\r\n      \"title\": \"BeispielTitel\",\r\n     
-    \"genre1\": \"BeispielGenre\",\r\n      \"genre2\": \"BeispielSecondaryGenre\",\r\n     
-    \"rating\": 5,\r\n      \"trend\": 5\r\n    }\r\nHerzlichen Gl\xFCckwunsch du
-    bist jetzt Coder / Modder"
+  m_text: "\td) Aktuell stehen folgende Genres zur Auswahl: (wird noch erweitert)\r\n\t\tNone,
+    Action,\n\t\tAdventure, Arcade,\n\t\tFighting, FPS,\n\t\tKoop, MOBA,\n\t\tPuzzle,
+    Racing,\r\n\t\tRTS, RPG,\n\t\tSandbox, Sports\r\n\te) zwischen Produkten muss
+    ein Komma gesetzt werden.\r\n\nEin Beispiel f\xFCr ein Produkt w\xE4re daher
+    folgendes:\r\n{\r\n      \"title\": \"BeispielTitel\",\r\n      \"genre1\": \"BeispielGenre\",\r\n     
+    \"genre2\": \"BeispielSecondaryGenre\",\r\n      \"rating\": 5,\r\n      \"trend\":
+    5\r\n}\r\n\nHerzlichen Gl\xFCckwunsch du bist jetzt Coder / Modder"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0161d805a3764c089bef00bfe00793f5, type: 2}
   m_sharedMaterial: {fileID: 2147374, guid: 0161d805a3764c089bef00bfe00793f5, type: 2}
@@ -286,8 +285,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4278190080
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -304,10 +303,10 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 20.4
-  m_fontSizeBase: 36
+  m_fontSize: 17
+  m_fontSizeBase: 17
   m_fontWeight: 400
-  m_enableAutoSizing: 1
+  m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
@@ -1356,7 +1355,7 @@ RectTransform:
   m_GameObject: {fileID: 1996592646}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.1503, y: 1.1503, z: 1.1503}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2022101554}
@@ -1364,7 +1363,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -252.99838, y: -3.7888}
+  m_AnchoredPosition: {x: -402, y: -98}
   m_SizeDelta: {x: 505.9968, y: 562.4224}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1996592648
@@ -1387,17 +1386,19 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "1. Finde und \xF6ffne die Json. (Im Spielverzeichnis: Assets -> StreamingAssets
-    -> products.json)\r\n2. Hier k\xF6nnen jetzt die produkte bearbeitet, erstellt
-    und entfernt werden.\r\nDaf\xFCr sollte folgendes beachtet werden:\r\n\ta) Die
-    ersten beiden Zeilen, sowie die letzten 2 Zeilen d\xFCrfen NICHT VER\xC4NDERT
-    werden.\r\n\tb) Jedes Produkt beginnt und endet mit einer geschweiften Klammer
-    \"{}\" und hat folgende 5 Attribute,\r\n\t   die zwischen den Klammern aufgef\xFChrt
-    werden m\xFCssen:\r\n\t\t- Titel\r\n\t\t- Genre\r\n\t\t- Secondary Genre (optional)\r\n\t\t-
-    Rating\r\n\t\t- Trend\r\r\n\tc) Die 5 Attribute k\xF6nnen auf folgende Weise
-    initialisiert werden:\r\n\t\t\"title\": \"Hier Titel einf\xFCgen\",\r\n\t\t\"genre1\":
-    \"Hier Genre ausw\xE4hlen\",\r\n\t\t\"genre2\": \"Hier ein 2.Genre w\xE4hlen
-    (optional)\",\r"
+  m_text: "1. Finde und \xF6ffne die Json.\n\t(Im Spielverzeichnis: Assets -> StreamingAssets
+    -> products.json)\r\n2. Hier k\xF6nnen jetzt die Produkte bearbeitet, erstellt
+    und entfernt werden.\r\n\nDaf\xFCr sollte folgendes beachtet werden:\r\n\ta)
+    Die ersten beiden Zeilen, sowie die letzten 2 Zeilen d\xFCrfen\n\t     NICHT
+    VER\xC4NDERT werden.\r\n\tb) Jedes Produkt beginnt und endet mit einer geschweiften\n\t    
+    Klammer \"{}\" und hat folgende 5 Attribute,\r \n\t     die zwischen den Klammern
+    aufgef\xFChrt werden m\xFCssen:\r\n\t\t\t- Titel\r\n\t\t\t- Genre\r\n\t\t\t-
+    Secondary Genre (optional)\r\n\t\t\t- Rating\r\n\t\t\t- Trend\r\r\n\tc) Die 5
+    Attribute k\xF6nnen auf folgende Weise initialisiert werden:\r\n\t\t\"title\":
+    \"Hier Titel einf\xFCgen\",\r\n\t\t\"genre1\": \"Hier Genre ausw\xE4hlen\",\r\n\t\t\"genre2\":
+    \"Hier ein 2.Genre w\xE4hlen (optional)\",\r\n\t\t\"rating\": X, (hier f\xFCr
+    \"X\" einen Wert von 1-5 einsetzen)\r\n\t\t\"trend\": X (hier f\xFCr \"X\" einen
+    Wert von 1-5 einsetzen)\r"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0161d805a3764c089bef00bfe00793f5, type: 2}
   m_sharedMaterial: {fileID: 2147374, guid: 0161d805a3764c089bef00bfe00793f5, type: 2}
@@ -1406,8 +1407,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4278190080
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -1424,10 +1425,10 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 18.95
-  m_fontSizeBase: 36
+  m_fontSize: 17
+  m_fontSizeBase: 17
   m_fontWeight: 400
-  m_enableAutoSizing: 1
+  m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
