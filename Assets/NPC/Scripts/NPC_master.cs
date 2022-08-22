@@ -329,8 +329,8 @@ public class NPC_master : MonoBehaviour //for all the stats & bahaviour of the n
 
     private void Wander() {
         agent.destination = goalPos;
-        foreach(GameObject Obj in Shelves){
-            if (Check.takeGame(wantedGameId)){
+        foreach(GameObject Check in Shelves){
+            if (Check.GetComponent<ShelvesBehavior>().takeGame(wantedGameId)){
                 Debug.Log("Checked a shelf");
                 wantedGameNotHere = false;
                 break;
