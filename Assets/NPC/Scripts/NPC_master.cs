@@ -281,7 +281,8 @@ public class NPC_master : MonoBehaviour //for all the stats & bahaviour of the n
 
     private void goToRegister()
     {    
-        if (agent.destination == registerPos)
+        if (transform.position.x <= registerPos.x + 0.2 && transform.position.x >= registerPos.x - 0.2 &&
+            transform.position.z <= registerPos.z + 0.2 && transform.position.z >= registerPos.z - 0.2)
         {
             agent.destination = transform.position;
         }
