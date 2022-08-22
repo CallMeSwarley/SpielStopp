@@ -46,9 +46,9 @@ public class InteractionManagerNPC : MonoBehaviour, Interactable
             cashRegister.interactionManagerNPC = this;
             if (npc_master.currentState == NPC_master.state.justLooking)
             {
+                Debug.Log("Geschichtn ausm Paulanergarten");
                 story = createStory("Assets/Dialoge/justLookingDialogue.json");
                 startDialog(story);
-               
             }
             else if (npc_master.currentState == NPC_master.state.searchingForSth)
             {

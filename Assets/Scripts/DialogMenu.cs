@@ -7,6 +7,7 @@ using UnityEditor;
 // This is a super bare bones example of how to play and display a ink story in Unity.
 public class DialogMenu : MonoBehaviour
 {
+	public Story story;
 	public static event Action<Story> OnCreateStory;
 	private InteractionManagerNPC interactionManagerNPC;
 	private TextAsset inkJSONAsset;
@@ -120,9 +121,7 @@ public class DialogMenu : MonoBehaviour
 		}
 	}
 
-	//[SerializeField]
-	//public TextAsset inkJSONAsset;
-	public Story story;
+
 
 	[SerializeField]
 	private Canvas panel = null;
