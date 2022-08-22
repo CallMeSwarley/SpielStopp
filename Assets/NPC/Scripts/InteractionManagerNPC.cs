@@ -120,7 +120,7 @@ public class InteractionManagerNPC : MonoBehaviour, Interactable
         yield return new WaitForSeconds(0.2f);
         dialogMenu.gameObject.SetActive(false);
         interactable = true;
-        if (doAction && actionAfterDialog != null)
+        if (actionAfterDialog != null)
         {
             actionAfterDialog();
         }
