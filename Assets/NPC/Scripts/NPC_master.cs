@@ -67,7 +67,7 @@ public class NPC_master : MonoBehaviour //for all the stats & bahaviour of the n
         originalColor = npc_material.GetColor("_Color");
         wantedGameId = selectWishedGame();
         kundenType = SelectType();
-        movementTTL = 500 + UnityEngine.Random.Range(0, 500);
+        movementTTL = 750 + UnityEngine.Random.Range(0, 250);
         if (myRenderer.transform.position.x == 42) {
             desatisfactionSpeed = 0;
         }

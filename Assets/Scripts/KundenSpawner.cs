@@ -23,11 +23,6 @@ public class KundenSpawner : MonoBehaviour
         {
             spawnCustomer();
         }
-
-        if (Input.GetKeyDown("space"))
-        {
-            spawnCustomer();
-        }
     }
 
     void spawnCustomer()

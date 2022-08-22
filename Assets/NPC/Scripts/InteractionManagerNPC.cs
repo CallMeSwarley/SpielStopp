@@ -127,7 +127,10 @@ public class InteractionManagerNPC : MonoBehaviour, Interactable
         }
         if (!doAction)
         {
-            npc_master.currentState = NPC_master.state.leaving;
+            if (npc_master.currentState != NPC_master.state.justLooking)
+            {
+                npc_master.currentState = NPC_master.state.leaving;
+            }
         }
     }
 }
