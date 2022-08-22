@@ -38,7 +38,6 @@ public class NPC_master : MonoBehaviour //for all the stats & bahaviour of the n
     public enum type { 
         Seller,
         Know,
-        Quiz
     }
     type kundenType;
     NavMeshAgent agent;
@@ -78,14 +77,13 @@ public class NPC_master : MonoBehaviour //for all the stats & bahaviour of the n
 
     type SelectType(){
         return type.Seller;
-        int random = UnityEngine.Random.Range(0, 5);
-        if (random <= 1) {
-            return type.Know;
-        } else if (random < 4)
+        int random = UnityEngine.Random.Range(0, 4);
+        if (random <= 0)
         {
-            return type.Quiz;
+            return type.Seller;
         }
-        else {
+        else
+        {
             return type.Seller;
         }
     }
@@ -188,7 +186,6 @@ public class NPC_master : MonoBehaviour //for all the stats & bahaviour of the n
         
         agent.stoppingDistance = 0;
         hasWish = (currentState == state.justLooking || currentState == state.leaving || currentState == state.gotoRegister || currentState==state.arriving) ? false : true;
-        Debug.Log(currentState);
         
         switch (currentState) {
             case state.arriving:
@@ -323,10 +320,6 @@ public class NPC_master : MonoBehaviour //for all the stats & bahaviour of the n
                             break;
                     }
                     currentState = state.justLooking;
-                    break;
-                case type.Quiz:
-                    
-                    currentState = state.searchingForSth;
                     break;
                 case type.Seller:
                     

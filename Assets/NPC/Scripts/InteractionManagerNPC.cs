@@ -49,7 +49,7 @@ public class InteractionManagerNPC : MonoBehaviour, Interactable
             {
                 story = createStory("Assets/Dialoge/justLookingDialogue.json");
                 startDialog(story);
-                
+
             }
             else if (npc_master.currentState == NPC_master.state.searchingForSth)
             {
@@ -57,26 +57,27 @@ public class InteractionManagerNPC : MonoBehaviour, Interactable
                 story.variablesState["lookingFor"] = ProductDataManager.TitleData[npc_master.wantedGameId];
                 startDialog(story, npc_master.onClickFollow);
             }
-            else if(npc_master.currentState == NPC_master.state.wantToBuy)
+            else if (npc_master.currentState == NPC_master.state.wantToBuy)
             {
                 story = createStory("Assets/Dialoge/buyGame.json");
                 story.variablesState["GameTitle"] = ProductDataManager.TitleData[npc_master.wantedGameId];
                 startDialog(story, cashRegister.sellGame);
                 //cashRegister.sellGame();
-                endDialog(true);
-                Debug.Log(npc_master.currentState);
+
+
             }
             else if (npc_master.currentState == NPC_master.state.wantToSell)
             {
                 story = createStory("Assets/Dialoge/sellGame.json");
                 int randomGameID = UnityEngine.Random.Range(0, ProductDataManager.TitleData.Count - 1);
                 story.variablesState["GameToSell"] = ProductDataManager.TitleData[randomGameID];
-                UnityEngine.Random random = new Random();
-                int randomNumber = random.Next(2, 5);
-                int preis = (ProductDataManager.TrendData[randomGameID] + ProductDataManager.RatingData[randomGameID]) * randomNumber;
+                int preis = (ProductDataManager.TrendData[randomGameID] + ProductDataManager.RatingData[randomGameID]) * UnityEngine.Random.Range(2, 5);
                 story.variablesState["Price"] = preis;
                 startDialog(story);//kassenmenü öffnen
-
+                Debug.Log(story.variablesState["GameToSell"]);
+                
+                cashRegister.buyGame(preis);
+                
                 
             }
         }
@@ -102,7 +103,6 @@ public class InteractionManagerNPC : MonoBehaviour, Interactable
     {
         if (!dialogMenu.gameObject.active&&story!=null)
         {
-            Debug.Log("startetdialog");
             Cursor.lockState = CursorLockMode.Confined;
             Cursor.visible = true;
             Time.timeScale = 0.00001f;
@@ -118,7 +118,6 @@ public class InteractionManagerNPC : MonoBehaviour, Interactable
         Cursor.visible = false;
         Time.timeScale = 1f;
         yield return new WaitForSeconds(0.2f);
-        Debug.Log("endetdialog");
         dialogMenu.gameObject.SetActive(false);
         interactable = true;
         if (doAction && actionAfterDialog != null)

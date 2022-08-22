@@ -18,7 +18,7 @@ public class CashRegister : MonoBehaviour
 
     public void sellGame()
     {
-        float price = 60.0f;
+        float price = 60f;
         //todo remove game from database
         if (npc_master != null)
         {
@@ -27,9 +27,8 @@ public class CashRegister : MonoBehaviour
         Debug.Log(price);
         geld += price;
     }
-    public void buyGame()
+    public void buyGame(float price)
     {
-        float price = 60.0f;
         //todo add game from database
         if (npc_master != null)
         {
