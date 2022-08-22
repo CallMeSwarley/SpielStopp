@@ -13,6 +13,11 @@ public class Display_UI : MonoBehaviour
     private float maxSatisfaction = 100f;
     private float minSatisfaction = 0f;
     // Update is called once per frame
+
+    private void Start()
+    {
+        zufriedenheitsWert = 50f;
+    }
     void Update()
     {
         geldWert = CashRegister.geld;
