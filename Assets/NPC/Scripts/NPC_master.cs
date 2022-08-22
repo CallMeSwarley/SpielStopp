@@ -56,8 +56,8 @@ public class NPC_master : MonoBehaviour //for all the stats & bahaviour of the n
         currentState = state.arriving;// TODO: zukünftig random zuweisen & haswish nach random sek nach spawn aktivieren
         coroutineRunning = false;
         receivesHelp = false;
-        registerPos = new Vector3(-42, 1.55f, -15);
-        leavingPos = new Vector3(-40, 1.55f, -20);
+        registerPos = new Vector3(-42, 2, -15);
+        leavingPos = new Vector3(-13, 2, -60);
         goalPos = new Vector3(-25, 5, -8);//erstes regal oben rechts
         agent = GetComponent<NavMeshAgent>();
         myRenderer = GetComponent<Renderer>();
@@ -65,7 +65,6 @@ public class NPC_master : MonoBehaviour //for all the stats & bahaviour of the n
         originalColor = npc_material.GetColor("_Color");
         wantedGameId = selectWishedGame();
         kundenType = SelectType();
-        Debug.Log("I am a" + kundenType);
         if (myRenderer.transform.position.x == 42) {
             desatisfactionSpeed = 0;
         }
@@ -93,13 +92,10 @@ public class NPC_master : MonoBehaviour //for all the stats & bahaviour of the n
         {
             //Nachteil: Nimmt immer erstes spiel in der liste bei jeder der methoden. TODO: Ein spiel aus Pool mit richtigen Bewertungen aussuchen? 
             case 0:
-                Debug.Log("I chase good games");
                 return selectFromRating();
             case 1:
-                Debug.Log("I chase trendy games");
                 return selectFromTrend();
             case 2:
-                Debug.Log("I got specific tastes");
                 return selectFromGenre();
         }
         return 0;
@@ -114,7 +110,6 @@ public class NPC_master : MonoBehaviour //for all the stats & bahaviour of the n
             if (ProductDataManager.RatingData[i] >= 4)
             {
                 PotentialGames.Add(i);
-                Debug.Log("I am interested in " + ProductDataManager.TitleData[i]);
             }
         }
         if (PotentialGames.Count > 0)
@@ -134,7 +129,6 @@ public class NPC_master : MonoBehaviour //for all the stats & bahaviour of the n
             if (ProductDataManager.TrendData[i] >= 4)
             {
                 PotentialGames.Add(i);
-                Debug.Log("I am interested in " + ProductDataManager.TitleData[i]);
             }
         }
         if (PotentialGames.Count > 0)
@@ -156,7 +150,6 @@ public class NPC_master : MonoBehaviour //for all the stats & bahaviour of the n
             if (ProductDataManager.Genre1Data[i] == wanted || ProductDataManager.Genre2Data[i] == wanted)
             {
                 PotentialGames.Add(i);
-                Debug.Log("I am interested in " + ProductDataManager.TitleData[i]);
             }
         }
         if (PotentialGames.Count > 0)
@@ -186,6 +179,7 @@ public class NPC_master : MonoBehaviour //for all the stats & bahaviour of the n
     // Update is called once per frame
     void Update()
     {
+        
         agent.stoppingDistance = 0;
         hasWish = (currentState == state.justLooking || currentState == state.leaving || currentState == state.gotoRegister) ? false : true;
 
@@ -218,7 +212,7 @@ public class NPC_master : MonoBehaviour //for all the stats & bahaviour of the n
             case state.wantToBuy:
                 break;
             case state.arriving:
-                goToRegister();
+                enterStore();
                 break;
             default:
                 agent.destination = transform.position;
@@ -282,6 +276,28 @@ public class NPC_master : MonoBehaviour //for all the stats & bahaviour of the n
     private void goToRegister()
     {
         agent.destination = registerPos;
-        float dist = agent.remainingDistance; 
+    }
+
+    private void enterStore()
+    {
+        agent.destination = new Vector3(-41, 2, -15);
+        if (transform.position.x <= -40 && transform.position.z <= -14 && transform.position.y < 9)
+        {
+            switch (kundenType) {
+                case type.Know:
+                    Debug.Log("look");
+                        currentState=state.justLooking;
+                    break;
+                case type.Quiz:
+                    Debug.Log("search");
+                    currentState = state.searchingForSth;
+                    break;
+                case type.Seller:
+                    Debug.Log("sell");
+                    currentState = state.wantToSell;
+                    break;
+                    
+            } 
+        }
     }
 }
