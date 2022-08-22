@@ -72,6 +72,7 @@ public class NPC_master : MonoBehaviour //for all the stats & bahaviour of the n
     }
 
     type SelectType(){
+        return type.Know;
         int random = UnityEngine.Random.Range(0, 5);
         if (random <= 1) {
             return type.Know;
@@ -184,6 +185,12 @@ public class NPC_master : MonoBehaviour //for all the stats & bahaviour of the n
         hasWish = (currentState == state.justLooking || currentState == state.leaving || currentState == state.gotoRegister) ? false : true;
 
         switch (currentState) {
+            case state.arriving:
+                enterStore();
+                break;
+            case state.justLooking:
+                wander();
+                break;
             case state.Idle:
                 npc_material.SetColor("_Color", Color.blue);
                 break;
@@ -211,9 +218,7 @@ public class NPC_master : MonoBehaviour //for all the stats & bahaviour of the n
                 break;
             case state.wantToBuy:
                 break;
-            case state.arriving:
-                enterStore();
-                break;
+            
             default:
                 agent.destination = transform.position;
                 break;
@@ -299,5 +304,31 @@ public class NPC_master : MonoBehaviour //for all the stats & bahaviour of the n
                     
             } 
         }
+    }
+
+    private void wander() {
+        Vector3 destination;
+        agent.destination = destinaton;
+
+        int random = UnityEngine.Random.Range(0, 4);
+        switch (random) {
+            case 0:
+                destinaton = new Vector3(-28, 4.235f, -9.24f);
+                break;
+            case 1:
+                destinaton = new Vector3(-51.8f, 4.235f, -12.84f);
+                break;
+            case 2:
+                destinaton = new Vector3(-52.93f, 0.65f, -11f);
+                break;
+            case 3:
+                destinaton = new Vector3(-33.7f, 0.65f, -7.3f);
+                break;
+            default:
+                destinaton = new Vector3(-28, 4.235f, -9.24f);
+                break;
+        }
+        
+
     }
 }
