@@ -185,7 +185,7 @@ public class NPC_master : MonoBehaviour //for all the stats & bahaviour of the n
         
         agent.stoppingDistance = 0;
         hasWish = (currentState == state.justLooking || currentState == state.leaving || currentState == state.gotoRegister || currentState==state.arriving) ? false : true;
-        
+        Debug.Log(currentState);
         
         switch (currentState) {
             case state.arriving:
@@ -344,12 +344,7 @@ public class NPC_master : MonoBehaviour //for all the stats & bahaviour of the n
                 break;
             }
         }
-        StartCoroutine(Pause());
-
-    }
-    IEnumerator Pause() {
-        int random = UnityEngine.Random.Range(0, 21);
-        yield return new WaitForSeconds(10 + random);
+        
         if (wantedGameNotHere)
         {
             currentState = state.leaving;
@@ -357,7 +352,10 @@ public class NPC_master : MonoBehaviour //for all the stats & bahaviour of the n
         else
         {
             currentState = state.wantToBuy;
+            Debug.Log("I am here");
             goToRegister();
         }
+
     }
+    
 }
