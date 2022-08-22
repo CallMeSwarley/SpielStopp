@@ -70,7 +70,7 @@ public class RestockPC : MonoBehaviour, Interactable
     }
 
     public void BuyGame(int ID) {
-        Display_UI.geldWert -= 35;
+        CashRegister.geld -= 35;
         BuyMenuUI.SetActive(false);
         switch (ID) {
             case 1:

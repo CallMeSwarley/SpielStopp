@@ -6,7 +6,7 @@ public class CashRegister : MonoBehaviour
 {
     public NPC_master npc_master;
     public InteractionManagerNPC interactionManagerNPC;
-    public float geld;
+    public static float geld;
     // Start is called before the first frame update
     void Start()
     {
