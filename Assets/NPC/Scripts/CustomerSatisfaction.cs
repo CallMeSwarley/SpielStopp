@@ -18,6 +18,7 @@ public class CustomerSatisfaction : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        satisfactionLvl = 50;
         maxSatisfaction= npc_master.maxSatisfaction;
         slider.value = calcSatisfaction();
         satisfactionBarUI.SetActive(true);
