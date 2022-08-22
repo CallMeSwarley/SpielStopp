@@ -94,11 +94,11 @@ public class DialogMenu : MonoBehaviour
 			bool positiveEnding = (bool)story.variablesState["positiveEnding"];
 			if (positiveEnding)
             {
-				StartCoroutine(interactionManagerNPC.endDialog(true, actionAfterDialog));
+				StartCoroutine(interactionManagerNPC.endDialog(positiveEnding, actionAfterDialog));
             }
             else
             {
-				StartCoroutine(interactionManagerNPC.endDialog(true, actionAfterDialogNegative));
+				StartCoroutine(interactionManagerNPC.endDialog(positiveEnding, actionAfterDialogNegative));
 			}
 			
 		}
