@@ -25,6 +25,7 @@ public class CashRegister : MonoBehaviour
         {
             npc_master.currentState = NPC_master.state.satisfied;
         }
+        Debug.Log(price);
         geld += price;
     }
     public void buyGame()
@@ -34,6 +35,7 @@ public class CashRegister : MonoBehaviour
         {
             npc_master.currentState = NPC_master.state.satisfied;
         }
+        Debug.Log(price);
         geld -= price;  
     }
     
