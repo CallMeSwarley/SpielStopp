@@ -425,7 +425,7 @@ GameObject:
   - component: {fileID: 4558930}
   - component: {fileID: 4558931}
   m_Layer: 0
-  m_Name: ShelfGroup1
+  m_Name: OgGroup2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8659,16 +8659,28 @@ PrefabInstance:
     m_TransformParent: {fileID: 83515344}
     m_Modifications:
     - target: {fileID: 104030068549624371, guid: dfddf7b575ed0694d9e017986932f2c2, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 104030068549624371, guid: dfddf7b575ed0694d9e017986932f2c2, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
+      objectReference: {fileID: 1707466569}
+    - target: {fileID: 104030068549624371, guid: dfddf7b575ed0694d9e017986932f2c2, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: PlaceInShelf
       objectReference: {fileID: 0}
     - target: {fileID: 104030068549624371, guid: dfddf7b575ed0694d9e017986932f2c2, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: PauseMenu, Assembly-CSharp
+      value: RestockPC, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 104030068549624371, guid: dfddf7b575ed0694d9e017986932f2c2, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 4558929}
+    - target: {fileID: 104030068549624371, guid: dfddf7b575ed0694d9e017986932f2c2, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.GameObject, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 977462030525978068, guid: dfddf7b575ed0694d9e017986932f2c2, type: 3}
       propertyPath: m_Name
@@ -18045,16 +18057,28 @@ PrefabInstance:
     m_TransformParent: {fileID: 1557632283843434064}
     m_Modifications:
     - target: {fileID: 104030068549624371, guid: dfddf7b575ed0694d9e017986932f2c2, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 104030068549624371, guid: dfddf7b575ed0694d9e017986932f2c2, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
+      objectReference: {fileID: 1707466569}
+    - target: {fileID: 104030068549624371, guid: dfddf7b575ed0694d9e017986932f2c2, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: PlaceInShelf
       objectReference: {fileID: 0}
     - target: {fileID: 104030068549624371, guid: dfddf7b575ed0694d9e017986932f2c2, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: PauseMenu, Assembly-CSharp
+      value: RestockPC, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 104030068549624371, guid: dfddf7b575ed0694d9e017986932f2c2, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 379422873}
+    - target: {fileID: 104030068549624371, guid: dfddf7b575ed0694d9e017986932f2c2, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.GameObject, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 977462030525978068, guid: dfddf7b575ed0694d9e017986932f2c2, type: 3}
       propertyPath: m_Name
@@ -21164,7 +21188,7 @@ GameObject:
   - component: {fileID: 379422874}
   - component: {fileID: 379422875}
   m_Layer: 0
-  m_Name: ShelfGroup2
+  m_Name: EgGroup5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -23108,16 +23132,28 @@ PrefabInstance:
     m_TransformParent: {fileID: 1557632283843434064}
     m_Modifications:
     - target: {fileID: 104030068549624371, guid: dfddf7b575ed0694d9e017986932f2c2, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 104030068549624371, guid: dfddf7b575ed0694d9e017986932f2c2, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
+      objectReference: {fileID: 1707466569}
+    - target: {fileID: 104030068549624371, guid: dfddf7b575ed0694d9e017986932f2c2, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: PlaceInShelf
       objectReference: {fileID: 0}
     - target: {fileID: 104030068549624371, guid: dfddf7b575ed0694d9e017986932f2c2, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: PauseMenu, Assembly-CSharp
+      value: RestockPC, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 104030068549624371, guid: dfddf7b575ed0694d9e017986932f2c2, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 904864472}
+    - target: {fileID: 104030068549624371, guid: dfddf7b575ed0694d9e017986932f2c2, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.GameObject, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 977462030525978068, guid: dfddf7b575ed0694d9e017986932f2c2, type: 3}
       propertyPath: m_Name
@@ -25611,16 +25647,28 @@ PrefabInstance:
     m_TransformParent: {fileID: 83515344}
     m_Modifications:
     - target: {fileID: 104030068549624371, guid: dfddf7b575ed0694d9e017986932f2c2, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 104030068549624371, guid: dfddf7b575ed0694d9e017986932f2c2, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
+      objectReference: {fileID: 1707466569}
+    - target: {fileID: 104030068549624371, guid: dfddf7b575ed0694d9e017986932f2c2, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: PlaceInShelf
       objectReference: {fileID: 0}
     - target: {fileID: 104030068549624371, guid: dfddf7b575ed0694d9e017986932f2c2, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: PauseMenu, Assembly-CSharp
+      value: RestockPC, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 104030068549624371, guid: dfddf7b575ed0694d9e017986932f2c2, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 663111614}
+    - target: {fileID: 104030068549624371, guid: dfddf7b575ed0694d9e017986932f2c2, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.GameObject, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 977462030525978068, guid: dfddf7b575ed0694d9e017986932f2c2, type: 3}
       propertyPath: m_Name
@@ -27151,6 +27199,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 496131210}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &498361148 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5135701168468704168, guid: 3644631aca093214b9d00dc0d1247f77, type: 3}
+  m_PrefabInstance: {fileID: 2012334037}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &498732940
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -36314,7 +36367,7 @@ GameObject:
   - component: {fileID: 663111615}
   - component: {fileID: 663111616}
   m_Layer: 0
-  m_Name: ShelgGroup3
+  m_Name: EgGroup4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -45554,16 +45607,28 @@ PrefabInstance:
     m_TransformParent: {fileID: 83515344}
     m_Modifications:
     - target: {fileID: 104030068549624371, guid: dfddf7b575ed0694d9e017986932f2c2, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 104030068549624371, guid: dfddf7b575ed0694d9e017986932f2c2, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
+      objectReference: {fileID: 1707466569}
+    - target: {fileID: 104030068549624371, guid: dfddf7b575ed0694d9e017986932f2c2, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: PlaceInShelf
       objectReference: {fileID: 0}
     - target: {fileID: 104030068549624371, guid: dfddf7b575ed0694d9e017986932f2c2, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: PauseMenu, Assembly-CSharp
+      value: RestockPC, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 104030068549624371, guid: dfddf7b575ed0694d9e017986932f2c2, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 1681604001}
+    - target: {fileID: 104030068549624371, guid: dfddf7b575ed0694d9e017986932f2c2, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.GameObject, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 977462030525978068, guid: dfddf7b575ed0694d9e017986932f2c2, type: 3}
       propertyPath: m_Name
@@ -49642,7 +49707,7 @@ GameObject:
   - component: {fileID: 904864473}
   - component: {fileID: 904864474}
   m_Layer: 0
-  m_Name: ShelfGroup1
+  m_Name: EgGroup6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -51227,7 +51292,7 @@ GameObject:
   - component: {fileID: 928148793}
   - component: {fileID: 928148794}
   m_Layer: 0
-  m_Name: ShelfGroup1 (1)
+  m_Name: EgGroup1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -58285,7 +58350,7 @@ GameObject:
   - component: {fileID: 1076619991}
   - component: {fileID: 1076619992}
   m_Layer: 0
-  m_Name: ShelfGroup2 (1)
+  m_Name: EgGroup2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -73032,6 +73097,10 @@ PrefabInstance:
       value: RestockPC, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 104030068549624371, guid: dfddf7b575ed0694d9e017986932f2c2, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 928148792}
+    - target: {fileID: 104030068549624371, guid: dfddf7b575ed0694d9e017986932f2c2, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.GameObject, UnityEngine
       objectReference: {fileID: 0}
@@ -78603,16 +78672,28 @@ PrefabInstance:
     m_TransformParent: {fileID: 1557632284863931104}
     m_Modifications:
     - target: {fileID: 104030068549624371, guid: dfddf7b575ed0694d9e017986932f2c2, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 104030068549624371, guid: dfddf7b575ed0694d9e017986932f2c2, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
+      objectReference: {fileID: 1707466569}
+    - target: {fileID: 104030068549624371, guid: dfddf7b575ed0694d9e017986932f2c2, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: PlaceInShelf
       objectReference: {fileID: 0}
     - target: {fileID: 104030068549624371, guid: dfddf7b575ed0694d9e017986932f2c2, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: PauseMenu, Assembly-CSharp
+      value: RestockPC, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 104030068549624371, guid: dfddf7b575ed0694d9e017986932f2c2, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 1750063098}
+    - target: {fileID: 104030068549624371, guid: dfddf7b575ed0694d9e017986932f2c2, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.GameObject, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 977462030525978068, guid: dfddf7b575ed0694d9e017986932f2c2, type: 3}
       propertyPath: m_Name
@@ -86845,16 +86926,28 @@ PrefabInstance:
     m_TransformParent: {fileID: 1557632284863931104}
     m_Modifications:
     - target: {fileID: 104030068549624371, guid: dfddf7b575ed0694d9e017986932f2c2, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 104030068549624371, guid: dfddf7b575ed0694d9e017986932f2c2, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
+      objectReference: {fileID: 1707466569}
+    - target: {fileID: 104030068549624371, guid: dfddf7b575ed0694d9e017986932f2c2, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: PlaceInShelf
       objectReference: {fileID: 0}
     - target: {fileID: 104030068549624371, guid: dfddf7b575ed0694d9e017986932f2c2, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: PauseMenu, Assembly-CSharp
+      value: RestockPC, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 104030068549624371, guid: dfddf7b575ed0694d9e017986932f2c2, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 1076619990}
+    - target: {fileID: 104030068549624371, guid: dfddf7b575ed0694d9e017986932f2c2, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.GameObject, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 977462030525978068, guid: dfddf7b575ed0694d9e017986932f2c2, type: 3}
       propertyPath: m_Name
@@ -89125,7 +89218,7 @@ GameObject:
   - component: {fileID: 1681604002}
   - component: {fileID: 1681604003}
   m_Layer: 0
-  m_Name: ShelfGroup2
+  m_Name: OgGroup1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -91726,7 +91819,7 @@ GameObject:
   - component: {fileID: 1750063099}
   - component: {fileID: 1750063100}
   m_Layer: 0
-  m_Name: ShelgGroup3 (1)
+  m_Name: EgGroup3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -104947,6 +105040,20 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5480455975076028690, guid: 3644631aca093214b9d00dc0d1247f77, type: 3}
   m_PrefabInstance: {fileID: 2012334037}
   m_PrefabAsset: {fileID: 0}
+--- !u!64 &2012334039
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 498361148}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 0}
 --- !u!1 &2012491057
 GameObject:
   m_ObjectHideFlags: 0
@@ -107875,7 +107982,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &2049389624
 MonoBehaviour:
   m_ObjectHideFlags: 0
