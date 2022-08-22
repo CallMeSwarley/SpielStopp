@@ -189,7 +189,7 @@ public class NPC_master : MonoBehaviour //for all the stats & bahaviour of the n
                 enterStore();
                 break;
             case state.justLooking:
-                wander();
+                Wander();
                 break;
             case state.Idle:
                 npc_material.SetColor("_Color", Color.blue);
@@ -280,6 +280,7 @@ public class NPC_master : MonoBehaviour //for all the stats & bahaviour of the n
     }
 
     private void goToRegister()
+<<<<<<< Updated upstream
     {    
         if (transform.position.x <= registerPos.x + 0.2 && transform.position.x >= registerPos.x - 0.2 &&
             transform.position.z <= registerPos.z + 0.2 && transform.position.z >= registerPos.z - 0.2)
@@ -290,6 +291,10 @@ public class NPC_master : MonoBehaviour //for all the stats & bahaviour of the n
         {
             agent.destination = registerPos;
         }
+=======
+    {
+        agent.destination = registerPos;
+>>>>>>> Stashed changes
     }
 
     private void enterStore()
@@ -300,7 +305,7 @@ public class NPC_master : MonoBehaviour //for all the stats & bahaviour of the n
             switch (kundenType) {
                 case type.Know:
                     Debug.Log("look");
-                    int random = UnityEngine.Random.Range(0, 5);
+                    int random = UnityEngine.Random.Range(0, 4);
                     switch (random)
                     {
                         case 0:
@@ -314,9 +319,6 @@ public class NPC_master : MonoBehaviour //for all the stats & bahaviour of the n
                             break;
                         case 3:
                             goalPos = new Vector3(-52.997f, 1.514f, -11.028f);
-                            break;
-                        case 4:
-                            goalPos = new Vector3(-26.963f, 1.514f, -12.386f);
                             break;
                         default:
                             goalPos = new Vector3(-28, 4.235f, -9.24f);
@@ -337,8 +339,16 @@ public class NPC_master : MonoBehaviour //for all the stats & bahaviour of the n
         }
     }
 
-    private void wander() {
+    private void Wander() {
         agent.destination = goalPos;
+        
+        StartCoroutine(Pause());
 
+    }
+    IEnumerator Pause() {
+        int random = UnityEngine.Random.Range(0, 21);
+        yield return new WaitForSeconds(10 + random);
+        currentState = state.wantToBuy;
+        goToRegister();
     }
 }
