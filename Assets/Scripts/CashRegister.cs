@@ -7,6 +7,7 @@ public class CashRegister : MonoBehaviour
     public NPC_master npc_master;
     public InteractionManagerNPC interactionManagerNPC;
     public static float geld;
+    public float price;
     // Start is called before the first frame update
     void Start()
     {
@@ -27,7 +28,7 @@ public class CashRegister : MonoBehaviour
         Debug.Log(price);
         geld += price;
     }
-    public void buyGame(float price)
+    public void buyGame()
     {
         //todo add game from database
         if (npc_master != null)

@@ -73,10 +73,10 @@ public class InteractionManagerNPC : MonoBehaviour, Interactable
                 story.variablesState["GameToSell"] = ProductDataManager.TitleData[randomGameID];
                 int preis = (ProductDataManager.TrendData[randomGameID] + ProductDataManager.RatingData[randomGameID]) * UnityEngine.Random.Range(2, 5);
                 story.variablesState["Price"] = preis;
-                startDialog(story);//kassenmenü öffnen
-                Debug.Log(story.variablesState["GameToSell"]);
+                cashRegister.price = preis;
+                startDialog(story, cashRegister.buyGame);//kassenmenü öffnen
                 
-                cashRegister.buyGame(preis);
+                //cashRegister.buyGame(preis);
                 
                 
             }
@@ -123,6 +123,10 @@ public class InteractionManagerNPC : MonoBehaviour, Interactable
         if (doAction && actionAfterDialog != null)
         {
             actionAfterDialog();
+        }
+        if (!doAction)
+        {
+            npc_master.currentState = NPC_master.state.leaving;
         }
     }
 }

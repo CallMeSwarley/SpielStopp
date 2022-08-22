@@ -214,7 +214,7 @@ public class NPC_master : MonoBehaviour //for all the stats & bahaviour of the n
                 break;
             case state.satisfied:
                 hasWish = false;
-                currentState = state.leaving;
+                //currentState = state.leaving;
                 break;
             case state.wantToSell:
                 goToRegister();
