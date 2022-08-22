@@ -75,7 +75,6 @@ public class NPC_master : MonoBehaviour //for all the stats & bahaviour of the n
             //Nachteil: Nimmt immer erstes spiel in der liste bei jeder der methoden. TODO: Ein spiel aus Pool mit richtigen Bewertungen aussuchen? 
             case 0:
                 return selectFromRating();
-
             case 1:
                 return selectFromTrend();
             case 2:
