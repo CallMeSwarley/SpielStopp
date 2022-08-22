@@ -56,7 +56,7 @@ public class NPC_master : MonoBehaviour //for all the stats & bahaviour of the n
         currentState = state.arriving;// TODO: zukünftig random zuweisen & haswish nach random sek nach spawn aktivieren
         coroutineRunning = false;
         receivesHelp = false;
-        registerPos = new Vector3(-42, 2, -15);
+        registerPos = new Vector3(-43, 1.53731f, -14);
         leavingPos = new Vector3(-13, 2, -60);
         goalPos = new Vector3(-25, 5, -8);//erstes regal oben rechts
         agent = GetComponent<NavMeshAgent>();
@@ -182,7 +182,7 @@ public class NPC_master : MonoBehaviour //for all the stats & bahaviour of the n
     {
         
         agent.stoppingDistance = 0;
-        hasWish = (currentState == state.justLooking || currentState == state.leaving || currentState == state.gotoRegister) ? false : true;
+        hasWish = (currentState == state.justLooking || currentState == state.leaving || currentState == state.gotoRegister || currentState==state.arriving) ? false : true;
 
         switch (currentState) {
             case state.arriving:
@@ -217,6 +217,7 @@ public class NPC_master : MonoBehaviour //for all the stats & bahaviour of the n
                 goToRegister();
                 break;
             case state.wantToBuy:
+                goToRegister();
                 break;
             
             default:
@@ -273,14 +274,21 @@ public class NPC_master : MonoBehaviour //for all the stats & bahaviour of the n
             transform.position.z <= goalPos.z + 1 && transform.position.z >= goalPos.z - 1)
         {
             followPlayer = false;
-            currentState = state.gotoRegister;
+            currentState = state.wantToBuy;
             agent.destination = registerPos;
         }
     }
 
     private void goToRegister()
-    {
-        agent.destination = registerPos;
+    {    
+        if (agent.destination == registerPos)
+        {
+            agent.destination = transform.position;
+        }
+        else
+        {
+            agent.destination = registerPos;
+        }
     }
 
     private void enterStore()
