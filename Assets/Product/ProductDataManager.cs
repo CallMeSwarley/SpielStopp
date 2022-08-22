@@ -127,6 +127,14 @@ public class ProductDataManager : MonoBehaviour
         {
             return Genre.FPS;
         }
+        else if (string.Equals(value, "Koop"))
+        {
+            return Genre.Koop;
+        }
+        else if (string.Equals(value, "MOBA"))
+        {
+            return Genre.MOBA;
+        }
         else if (string.Equals(value, "Puzzle"))
         {
             return Genre.Puzzle;

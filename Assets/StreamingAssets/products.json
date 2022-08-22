@@ -11,22 +11,22 @@
       "title": "Wallet Impact",
       "genre1": "RPG",
       "genre2": "Sandbox",
-      "rating": 5,
-      "trend": 4
+      "rating": 4,
+      "trend": 3
     },
     {
       "title": "Human Gatherer",
       "genre1": "RPG",
       "genre2": "Action",
       "rating": 5,
-      "trend": 5  
+      "trend": 4
     },
     {
       "title": "Studio Dying",
       "genre1": "RPG",
       "genre2": "Adventure",
-      "rating": 2,
-      "trend": 4
+      "rating": 1,
+      "trend": 1
     },
     {
       "title": "Legally not TFT",
@@ -40,7 +40,91 @@
       "genre1": "Action",
       "genre2": "Sports",
       "rating": 3,
+      "trend": 3
+    },
+    {
+      "title": "The Mutant 3",
+      "genre1": "Adventure",
+      "genre2": "RPG",
+      "rating": 5,
+      "trend": 1
+    },
+    {
+      "title": "League of Flaming",
+      "genre1": "MOBA",
+      "genre2": "Action",
+      "rating": 4,
+      "trend": 4
+    },
+    {
+      "title": "Stumbling Lands",
+      "genre1": "Action",
+      "genre2": "Fighting",
+      "rating": 5,
       "trend": 5
+    },
+    {
+      "title": "Year 1800, but far too progressive",
+      "genre1": "Sandbox",
+      "genre2": "Action",
+      "rating": 5,
+      "trend": 2
+    },
+    {
+      "title": "Cheaterant",
+      "genre1": "Fighting",
+      "genre2": "FPS",
+      "rating": 3,
+      "trend": 3
+    },
+    {
+      "title": "Developer vs Modder 5",
+      "genre1": "Adventure",
+      "genre2": "-",
+      "rating": 5,
+      "trend": 4
+    },
+    {
+      "title": "Blockcraft",
+      "genre1": "Adventure",
+      "genre2": "Action",
+      "rating": 4,
+      "trend": 2
+    },
+    {
+      "title": "Definitely not a copy of LoL",
+      "genre1": "MOBA",
+      "genre2": "Action",
+      "rating": 2,
+      "trend": 2
+    },
+    {
+      "title": "Horde Incoming",
+      "genre1": "Koop",
+      "genre2": "Action",
+      "rating": 3,
+      "trend": 1
+    },
+    {
+      "title": "Call of Trouble",
+      "genre1": "FPS",
+      "genre2": "Action",
+      "rating": 2,
+      "trend": 1
+    },
+    {
+      "title": "Gate to Madness",
+      "genre1": "Puzzle",
+      "genre2": "Koop",
+      "rating": 3,
+      "trend": 2
+    },
+    {
+      "title": "Human Development 6",
+      "genre1": "RTS",
+      "genre2": "Sandbox",
+      "rating": 4,
+      "trend": 2
     }
   ]
 }

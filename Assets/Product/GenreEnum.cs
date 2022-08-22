@@ -11,6 +11,8 @@ public enum Genre
     Arcade,
     Fighting,
     FPS,
+    Koop,
+    MOBA,
     Puzzle,
     Racing,
     RTS,
@@ -24,7 +26,7 @@ public enum Genre
 class GenreGiver{
     public static Genre giveGenre()
     {
-        int select = Random.Range(0, 11);
+        int select = Random.Range(0, 13);
         return (Genre)select;
     }
 }
