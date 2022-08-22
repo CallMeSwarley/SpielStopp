@@ -7,32 +7,30 @@ using UnityEngine.SceneManagement;
 public class MainMenu : MonoBehaviour
 {
     public string firstLvl;
-
+    public Canvas tutorialCanvas;
     // Start is called before the first frame update
     void Start()
     {
-        
+        if (tutorialCanvas != null)
+        {
+            tutorialCanvas.gameObject.SetActive(false);
+        } 
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     public void startGame()
     {
         SceneManager.LoadScene(firstLvl);
     }
    
-    public void openOptions()// here you can select the game mode
+    public void openTutorial()
     {
-
+        tutorialCanvas.gameObject.SetActive(true);
     }
 
-    public void closeOptions()
+    public void closeTutorial()
     {
-
+        tutorialCanvas.gameObject.SetActive(false);
     }
 
     public void quitGame()
