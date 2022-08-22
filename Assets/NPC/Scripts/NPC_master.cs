@@ -83,7 +83,7 @@ public class NPC_master : MonoBehaviour //for all the stats & bahaviour of the n
         }
         else
         {
-            return type.Seller;
+            return type.Know;
         }
     }
     int selectWishedGame()
