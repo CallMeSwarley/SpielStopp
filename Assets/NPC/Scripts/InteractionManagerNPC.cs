@@ -49,6 +49,7 @@ public class InteractionManagerNPC : MonoBehaviour, Interactable
             {
                 story = createStory("Assets/Dialoge/justLookingDialogue.json");
                 startDialog(story);
+                
             }
             else if (npc_master.currentState == NPC_master.state.searchingForSth)
             {
@@ -60,19 +61,16 @@ public class InteractionManagerNPC : MonoBehaviour, Interactable
             {
                 story = createStory("Assets/Dialoge/buyGame.json");
                 story.variablesState["GameTitle"] = ProductDataManager.TitleData[npc_master.wantedGameId];
-                jaButton.onClick.AddListener(delegate {
-                    cashRegister.sellGame();
-                });
-                startDialog(story, cashRegister.enterRegister);//kassenmenü öffnen
+                startDialog(story);
+                cashRegister.sellGame();
+                
+                Debug.Log(npc_master.currentState);
             }
             else if (npc_master.currentState == NPC_master.state.wantToSell)
             {
                 story = createStory("Assets/Dialoge/sellGame.json");
                 story.variablesState["GameToSell"] = ProductDataManager.TitleData[npc_master.wantedGameId];
-                jaButton.onClick.AddListener(delegate {
-                    cashRegister.buyGame();
-                });
-                startDialog(story,cashRegister.enterRegister);//kassenmenü öffnen
+                startDialog(story);//kassenmenü öffnen
             }
         }
     }

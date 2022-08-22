@@ -16,46 +16,27 @@ public class CashRegister : MonoBehaviour
 
     // Update is called once per frame
 
-    public void sellGame(float price=60.0f, int gameID = 0)
+    public void sellGame()
     {
+        float price = 60.0f;
         //todo remove game from database
         if (npc_master != null)
         {
-            npc_master.currentState = NPC_master.state.satisfied;
+            npc_master.currentState = NPC_master.state.leaving;
         }
         Debug.Log(price);
         geld += price;
-        leaveRegister();
     }
-    public void buyGame(float price = 60.0f, int gameID = 0)
+    public void buyGame()
     {
+        float price = 60.0f;
         //todo add game from database
         if (npc_master != null)
         {
-            npc_master.currentState = NPC_master.state.satisfied;
+            npc_master.currentState = NPC_master.state.leaving;
         }
         Debug.Log(price);
-        geld -= price;
-        leaveRegister();
+        geld -= price;  
     }
-    public void leaveRegister()
-    {
-        gameObject.SetActive(false);
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
-        Time.timeScale = 1f;
-        interactionManagerNPC.interactable = true;
-    }
-    public void enterRegister()
-    {
-        if (!gameObject.active)
-        {
-            Debug.Log("activate register");
-            gameObject.SetActive(true);
-            interactionManagerNPC.interactable = false;
-        }
-        Cursor.lockState = CursorLockMode.Confined;
-        Cursor.visible = true;
-        Time.timeScale = 0.00001f;
-    }
+    
 }
