@@ -8,9 +8,12 @@ public class CashRegister : MonoBehaviour
     public InteractionManagerNPC interactionManagerNPC;
     public static float geld;
     public float price;
+    RestockPC buyer;
+    int buyID;
     // Start is called before the first frame update
     void Start()
     {
+        buyer = GetComponentInParent<RestockPC>();
         gameObject.SetActive(false);
         geld = 500f;
     }
@@ -36,7 +39,10 @@ public class CashRegister : MonoBehaviour
             npc_master.currentState = NPC_master.state.satisfied;
         }
         Debug.Log(price);
-        geld -= price;  
+        geld -= price;
+        buyer.BuyGame(buyID);
+        
+
     }
     
 }

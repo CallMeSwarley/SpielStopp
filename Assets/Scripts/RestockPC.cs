@@ -70,6 +70,9 @@ public class RestockPC : MonoBehaviour, Interactable
     }
 
     public void BuyGame(int ID) {
+        Cursor.lockState = CursorLockMode.Confined;
+        Cursor.visible = true;
+        Time.timeScale = 0.00001f;//freezes time in game
         CashRegister.geld -= 35;
         BuyMenuUI.SetActive(false);
         switch (ID) {

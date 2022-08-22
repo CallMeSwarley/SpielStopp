@@ -74,6 +74,7 @@ public class InteractionManagerNPC : MonoBehaviour, Interactable
                 int preis = (ProductDataManager.TrendData[randomGameID] + ProductDataManager.RatingData[randomGameID]) * UnityEngine.Random.Range(2, 5);
                 story.variablesState["Price"] = preis;
                 cashRegister.price = preis;
+
                 startDialog(story, cashRegister.buyGame);//kassenmenü öffnen
                 
                 //cashRegister.buyGame(preis);
