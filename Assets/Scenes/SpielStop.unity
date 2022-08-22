@@ -5929,14 +5929,14 @@ MonoBehaviour:
   currentState: 6
   wantedGameId: 1
   Shelves:
-  - {fileID: 904864474}
-  - {fileID: 379422875}
-  - {fileID: 663111616}
-  - {fileID: 928148794}
-  - {fileID: 1076619992}
-  - {fileID: 1750063100}
-  - {fileID: 4558931}
-  - {fileID: 1681604003}
+  - {fileID: 904864472}
+  - {fileID: 379422873}
+  - {fileID: 663111614}
+  - {fileID: 928148792}
+  - {fileID: 1076619990}
+  - {fileID: 1750063098}
+  - {fileID: 4558929}
+  - {fileID: 1681604001}
 --- !u!114 &97118077
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7509,8 +7509,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 576, y: 0}
-  m_SizeDelta: {x: 365, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &115389704
 MonoBehaviour:
@@ -82465,8 +82465,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 576, y: 0}
-  m_SizeDelta: {x: 346, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1542820027
 MonoBehaviour:
@@ -97749,8 +97749,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 576, y: 0}
-  m_SizeDelta: {x: 1027, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1862958783
 MonoBehaviour:

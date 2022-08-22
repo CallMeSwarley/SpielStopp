@@ -70,10 +70,11 @@ public class NPC_master : MonoBehaviour //for all the stats & bahaviour of the n
             desatisfactionSpeed = 0;
         }
 
+
     }
 
     type SelectType(){
-        return type.Seller;
+        return type.Know;
         int random = UnityEngine.Random.Range(0, 5);
         if (random <= 1) {
             return type.Know;
@@ -184,7 +185,8 @@ public class NPC_master : MonoBehaviour //for all the stats & bahaviour of the n
         
         agent.stoppingDistance = 0;
         hasWish = (currentState == state.justLooking || currentState == state.leaving || currentState == state.gotoRegister || currentState==state.arriving) ? false : true;
-
+        
+        
         switch (currentState) {
             case state.arriving:
                 enterStore();
@@ -224,8 +226,9 @@ public class NPC_master : MonoBehaviour //for all the stats & bahaviour of the n
             default:
                 agent.destination = transform.position;
                 break;
-        }       
                
+        }  
+
         if (!receivesHelp)//zufriedenheitsanzeige regeln
         {
             if (hasWish && !coroutineRunning)
@@ -260,7 +263,7 @@ public class NPC_master : MonoBehaviour //for all the stats & bahaviour of the n
 
     private void leaveStore() {
         agent.destination = leavingPos;
-        if (transform.position.x == leavingPos.x && transform.position.z == leavingPos.z)
+        if (transform.position.x < -12 && transform.position.z <= -59)
         {
             Destroy(gameObject);//Laden verlassen
         }
@@ -292,7 +295,7 @@ public class NPC_master : MonoBehaviour //for all the stats & bahaviour of the n
         {
             switch (kundenType) {
                 case type.Know:
-                    Debug.Log("look");
+                    
                     int random = UnityEngine.Random.Range(0, 4);
                     switch (random)
                     {
@@ -312,14 +315,14 @@ public class NPC_master : MonoBehaviour //for all the stats & bahaviour of the n
                             goalPos = new Vector3(-28, 4.235f, -9.24f);
                             break;
                     }
-                    currentState =state.justLooking;
+                    currentState = state.justLooking;
                     break;
                 case type.Quiz:
-                    Debug.Log("search");
+                    
                     currentState = state.searchingForSth;
                     break;
                 case type.Seller:
-                    Debug.Log("sell");
+                    
                     currentState = state.wantToSell;
                     break;
                     
@@ -328,10 +331,12 @@ public class NPC_master : MonoBehaviour //for all the stats & bahaviour of the n
     }
 
     private void Wander() {
+        Debug.Log("I want " + ProductDataManager.TitleData[wantedGameId]);
         agent.destination = goalPos;
         foreach(GameObject Check in Shelves){
+            Debug.Log("Checked a shelf");
             if (Check.GetComponent<ShelvesBehavior>().takeGame(wantedGameId)){
-                Debug.Log("Checked a shelf");
+                Debug.Log("FoundYa");
                 wantedGameNotHere = false;
                 break;
             }
