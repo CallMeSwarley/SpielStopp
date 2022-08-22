@@ -84,7 +84,6 @@ public class RestockPC : MonoBehaviour, Interactable
                 ToStock = GameThreeID;
                 break;
         }
-        Debug.Log(ToStock);
         ShelfMenuUI.SetActive(true);
     }
 

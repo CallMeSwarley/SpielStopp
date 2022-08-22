@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ShelvesBehavior : MonoBehaviour
 {
+    [SerializeField]
     public static List<int> Inventory = new List<int>();
     [SerializeField]
     private GameObject littleOne;

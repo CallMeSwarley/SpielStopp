@@ -21,7 +21,7 @@ public class NPC_master : MonoBehaviour //for all the stats & bahaviour of the n
     public Vector3 leavingPos;
     public Vector3 registerPos;
     [HideInInspector]
-    public enum state 
+    public enum state
     {
         arriving,
         searchingForSth, // where is object xy located?
@@ -33,6 +33,12 @@ public class NPC_master : MonoBehaviour //for all the stats & bahaviour of the n
         gotoRegister,
         Idle
     }
+    public enum type { 
+        Seller,
+        Know,
+        Quiz
+    }
+    type kundenType;
     NavMeshAgent agent;
     Material npc_material;
     Renderer myRenderer;
@@ -58,13 +64,26 @@ public class NPC_master : MonoBehaviour //for all the stats & bahaviour of the n
         npc_material = myRenderer.material;
         originalColor = npc_material.GetColor("_Color");
         wantedGameId = selectWishedGame();
-
+        kundenType = SelectType();
+        Debug.Log("I am a" + kundenType);
         if (myRenderer.transform.position.x == 42) {
             desatisfactionSpeed = 0;
-            Debug.Log("passed");
         }
+
     }
 
+    type SelectType(){
+        int random = UnityEngine.Random.Range(0, 5);
+        if (random <= 1) {
+            return type.Know;
+        } else if (random < 4)
+        {
+            return type.Quiz;
+        }
+        else {
+            return type.Seller;
+        }
+    }
     int selectWishedGame()
     {
 
@@ -74,10 +93,13 @@ public class NPC_master : MonoBehaviour //for all the stats & bahaviour of the n
         {
             //Nachteil: Nimmt immer erstes spiel in der liste bei jeder der methoden. TODO: Ein spiel aus Pool mit richtigen Bewertungen aussuchen? 
             case 0:
+                Debug.Log("I chase good games");
                 return selectFromRating();
             case 1:
+                Debug.Log("I chase trendy games");
                 return selectFromTrend();
             case 2:
+                Debug.Log("I got specific tastes");
                 return selectFromGenre();
         }
         return 0;
@@ -87,11 +109,12 @@ public class NPC_master : MonoBehaviour //for all the stats & bahaviour of the n
     {
         List<int> PotentialGames = new List<int>();
         //Kunde will nur spiele mit Rating 4-5
-        for (int i = 0; i < ProductDataManager.RatingData.Count; i++)
+        for (int i = 0; i < ProductDataManager.RatingData.Count-1; i++)
         {
             if (ProductDataManager.RatingData[i] >= 4)
             {
                 PotentialGames.Add(i);
+                Debug.Log("I am interested in " + ProductDataManager.TitleData[i]);
             }
         }
         if (PotentialGames.Count > 0)
@@ -106,11 +129,12 @@ public class NPC_master : MonoBehaviour //for all the stats & bahaviour of the n
     {
         List<int> PotentialGames = new List<int>();
         //Kunde will nur spiele mit Trend 4-5
-        for (int i = 0; i < ProductDataManager.TrendData.Count; i++)
+        for (int i = 0; i < ProductDataManager.TrendData.Count-1; i++)
         {
             if (ProductDataManager.TrendData[i] >= 4)
             {
                 PotentialGames.Add(i);
+                Debug.Log("I am interested in " + ProductDataManager.TitleData[i]);
             }
         }
         if (PotentialGames.Count > 0)
@@ -127,11 +151,12 @@ public class NPC_master : MonoBehaviour //for all the stats & bahaviour of the n
 
         List<int> PotentialGames = new List<int>();
         //Kunde will nur spiele mit Trend 4-5
-        for (int i = 0; i < ProductDataManager.Genre1Data.Count; i++)
+        for (int i = 0; i < ProductDataManager.Genre1Data.Count-1; i++)
         {
             if (ProductDataManager.Genre1Data[i] == wanted || ProductDataManager.Genre2Data[i] == wanted)
             {
                 PotentialGames.Add(i);
+                Debug.Log("I am interested in " + ProductDataManager.TitleData[i]);
             }
         }
         if (PotentialGames.Count > 0)
