@@ -12,7 +12,6 @@ public class DialogMenu : MonoBehaviour
 	private InteractionManagerNPC interactionManagerNPC;
 	private TextAsset inkJSONAsset;
 	private Action actionAfterDialog=null;
-	private Action actionAfterDialogNegative = null;
 
 	public void startDialog(InteractionManagerNPC interactionManagerNPC, Story story, Action actionAfterDialog = null)
     {
@@ -28,22 +27,7 @@ public class DialogMenu : MonoBehaviour
 		RemoveChildren();
 		StartStory();
 	}
-	public void startDialogComplex(InteractionManagerNPC interactionManagerNPC, Story story, Action actionAfterDialog = null, 
-		Action actionAfterDialogNegative = null)
-	{
-		this.story = story;
-		this.interactionManagerNPC = interactionManagerNPC;
-		if (actionAfterDialog != null) { this.actionAfterDialog = actionAfterDialog; }
-		if (actionAfterDialogNegative != null) { this.actionAfterDialogNegative = actionAfterDialogNegative; }
-		if (story == null)//default dialog
-		{
-			Debug.Log("Couldn't find dialog -> using default");
-			TextAsset ta = (TextAsset)AssetDatabase.LoadAssetAtPath("Assets/Dialoge/justLookingDialogue.json", typeof(TextAsset));
-			this.story = new Story(ta.text);
-		}
-		RemoveChildren();
-		StartStory();
-	}
+	
 	public void startDialog()
     {
 		RemoveChildren();
