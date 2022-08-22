@@ -52,7 +52,7 @@ public class NPC_master : MonoBehaviour //for all the stats & bahaviour of the n
         receivesHelp = false;
         registerPos = new Vector3(-42, 1.55f, -15);
         leavingPos = new Vector3(-40, 1.55f, -20);
-        goalPos = new Vector3(5, 5, -2);
+        goalPos = new Vector3(-25, 5, -8);//erstes regal oben rechts
         agent = GetComponent<NavMeshAgent>();
         myRenderer = GetComponent<Renderer>();
         npc_material = myRenderer.material;
@@ -245,9 +245,9 @@ public class NPC_master : MonoBehaviour //for all the stats & bahaviour of the n
         agent.stoppingDistance = 3;
         npc_material.SetColor("_Color", Color.blue);
         agent.destination = transformToFollow.position;
-        if (transform.position.x <= goalPos.x + 0.2 && transform.position.x >= goalPos.x - 0.2 &&//TODO coordinaten vom gesuchten game einfügen
+        if (transform.position.x <= goalPos.x + 1 && transform.position.x >= goalPos.x - 1 &&
             transform.position.y <= goalPos.y + 0.2 && transform.position.y >= goalPos.y - 0.2 &&
-            transform.position.z <= goalPos.z + 0.2 && transform.position.z >= goalPos.z - 0.2)
+            transform.position.z <= goalPos.z + 1 && transform.position.z >= goalPos.z - 1)
         {
             followPlayer = false;
             currentState = state.gotoRegister;
@@ -259,6 +259,5 @@ public class NPC_master : MonoBehaviour //for all the stats & bahaviour of the n
     {
         agent.destination = registerPos;
         float dist = agent.remainingDistance; 
-        
     }
 }
