@@ -22,7 +22,7 @@ public class CashRegister : MonoBehaviour
         //todo remove game from database
         if (npc_master != null)
         {
-            npc_master.currentState = NPC_master.state.leaving;
+            npc_master.currentState = NPC_master.state.satisfied;
         }
         Debug.Log(price);
         geld += price;
@@ -33,7 +33,7 @@ public class CashRegister : MonoBehaviour
         //todo add game from database
         if (npc_master != null)
         {
-            npc_master.currentState = NPC_master.state.leaving;
+            npc_master.currentState = NPC_master.state.satisfied;
         }
         Debug.Log(price);
         geld -= price;  

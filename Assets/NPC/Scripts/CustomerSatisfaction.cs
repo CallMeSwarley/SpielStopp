@@ -44,6 +44,7 @@ public class CustomerSatisfaction : MonoBehaviour
             Debug.Log("Receives points");
             Display_UI.zufriedenheitsWert += (int)(10f*val);
             receivedSatisfactionpoints = true;
+            npc_master.currentState = NPC_master.state.leaving;
         }
     }
 
