@@ -335,6 +335,7 @@ public class NPC_master : MonoBehaviour //for all the stats & bahaviour of the n
         agent.destination = goalPos;
         foreach(GameObject Check in Shelves){
             Debug.Log("Checked a shelf");
+            Debug.Log(Check.GetComponent<ShelvesBehavior>().takeGame(wantedGameId));
             if (Check.GetComponent<ShelvesBehavior>().takeGame(wantedGameId)){
                 Debug.Log("FoundYa");
                 wantedGameNotHere = false;

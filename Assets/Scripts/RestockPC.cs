@@ -88,7 +88,7 @@ public class RestockPC : MonoBehaviour, Interactable
     }
 
     public void PlaceInShelf(GameObject Shelf){
-        Shelf.GetComponent<ShelvesBehavior>().stockGame(1);
+        Shelf.GetComponent<ShelvesBehavior>().stockGame(ToStock);
         resumeGame();
     }
 
