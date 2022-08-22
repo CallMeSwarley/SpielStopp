@@ -8,7 +8,7 @@ public class PauseMenu : MonoBehaviour
 {
     public string menu;
     public static bool isPaused = false;
-    private bool inDialog = false;
+    public static bool inDialog = false;
     public GameObject PauseMenuUI;
     // Start is called before the first frame update
     void Start()

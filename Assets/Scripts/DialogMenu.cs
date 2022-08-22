@@ -18,6 +18,7 @@ public class DialogMenu : MonoBehaviour
     {
 		this.story = story;
 		this.interactionManagerNPC = interactionManagerNPC;
+		PauseMenu.inDialog = true;
         if (actionAfterDialog != null) { this.actionAfterDialog = actionAfterDialog; }
         if (story == null)//default dialog
         {
@@ -94,6 +95,7 @@ public class DialogMenu : MonoBehaviour
 		else
 		{
 			bool positiveEnding = (bool)story.variablesState["positiveEnding"];
+			PauseMenu.inDialog = false;
 			if (positiveEnding)
             {
 				StartCoroutine(interactionManagerNPC.endDialog(positiveEnding, actionAfterDialog));
