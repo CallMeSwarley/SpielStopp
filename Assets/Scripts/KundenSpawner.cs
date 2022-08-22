@@ -4,26 +4,30 @@ using UnityEngine;
 
 public class KundenSpawner : MonoBehaviour
 {
-    int spawntimer;
+    [SerializeField]
+    float spawntimer;
     float spawnCoolDown;
     [SerializeField]
     GameObject Customer;
 
     private void Start()
     {
-
         spawnCustomer();
-
     }
-    
+
     void Update()
     {
-       spawntimer++;
-            if (spawntimer >= spawnCoolDown)
-            {
-                spawnCustomer();
-            }
-        
+
+        spawntimer = (spawntimer) + (1 * Time.deltaTime);
+        if (spawntimer >= spawnCoolDown)
+        {
+            spawnCustomer();
+        }
+
+        if (Input.GetKeyDown("space"))
+        {
+            spawnCustomer();
+        }
     }
 
     void spawnCustomer()
@@ -37,6 +41,6 @@ public class KundenSpawner : MonoBehaviour
     void nextSpawnIn()
     {
         float i = Display_UI.zufriedenheitsWert;
-        spawnCoolDown = 350 + (i * 5);   
+        spawnCoolDown = 5 + i;
     }
 }
