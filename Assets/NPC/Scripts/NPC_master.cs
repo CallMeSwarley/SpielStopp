@@ -46,10 +46,11 @@ public class NPC_master : MonoBehaviour //for all the stats & bahaviour of the n
     private bool followPlayer = false; // changes when you click on the npc and rechanges if you click again
     public state currentState;
     bool coroutineRunning;
-    bool wantedGameNotHere = false;
+    bool wantedGameNotHere = true;
     [SerializeField]
-    
     public int wantedGameId;
+    [SerializeField]
+    public GameObject[] Shelves = new GameObject[8];
     void Awake()
     {
         satisfactionLvl = maxSatisfaction;
@@ -279,22 +280,9 @@ public class NPC_master : MonoBehaviour //for all the stats & bahaviour of the n
         }
     }
 
-    private void goToRegister()
-<<<<<<< Updated upstream
-    {    
-        if (transform.position.x <= registerPos.x + 0.2 && transform.position.x >= registerPos.x - 0.2 &&
-            transform.position.z <= registerPos.z + 0.2 && transform.position.z >= registerPos.z - 0.2)
-        {
-            agent.destination = transform.position;
-        }
-        else
-        {
-            agent.destination = registerPos;
-        }
-=======
+    private void goToRegister()  
     {
         agent.destination = registerPos;
->>>>>>> Stashed changes
     }
 
     private void enterStore()
@@ -341,14 +329,27 @@ public class NPC_master : MonoBehaviour //for all the stats & bahaviour of the n
 
     private void Wander() {
         agent.destination = goalPos;
-        
+        foreach(GameObject Obj in Shelves){
+            if (Check.takeGame(wantedGameId)){
+                Debug.Log("Checked a shelf");
+                wantedGameNotHere = false;
+                break;
+            }
+        }
         StartCoroutine(Pause());
 
     }
     IEnumerator Pause() {
         int random = UnityEngine.Random.Range(0, 21);
         yield return new WaitForSeconds(10 + random);
-        currentState = state.wantToBuy;
-        goToRegister();
+        if (wantedGameNotHere)
+        {
+            currentState = state.leaving;
+        }
+        else
+        {
+            currentState = state.wantToBuy;
+            goToRegister();
+        }
     }
 }
