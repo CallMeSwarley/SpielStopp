@@ -71,7 +71,8 @@ public class InteractionManagerNPC : MonoBehaviour, Interactable
                 story = createStory("Assets/Dialoge/sellGame.json");
                 int randomGameID = UnityEngine.Random.Range(0, ProductDataManager.TitleData.Count - 1);
                 story.variablesState["GameToSell"] = ProductDataManager.TitleData[randomGameID];
-                story.variablesState["Price"] = (ProductDataManager.TrendData[randomGameID]+ProductDataManager.RatingData[randomGameID])*3;
+                int preis = (ProductDataManager.TrendData[randomGameID] + ProductDataManager.RatingData[randomGameID]) * 3;
+                story.variablesState["Price"] = preis;
                 startDialog(story);//kassenmenü öffnen
 
                 
