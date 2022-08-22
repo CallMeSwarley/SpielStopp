@@ -12,11 +12,11 @@ public class RestockPC : MonoBehaviour, Interactable
     public TMP_Text Titel3;
     public GameObject ShelfMenuUI;
     //public GameObject ShelfGroupEG1, ShelfGroupEG2, ShelfGroupEG3, ShelfGroupEG4, ShelfGroupEG5, ShelfGroupEG6, ShelfGroupOG1, ShelfGroupOG2;
-    private bool inDialog = false;
     int GameOneID;
     int GameTwoID;
     int GameThreeID;
     int ToStock;
+    bool active = true;
     
     public void endInteract()
     {
@@ -31,6 +31,7 @@ public class RestockPC : MonoBehaviour, Interactable
             GameOneID = UnityEngine.Random.Range(0, ProductDataManager.TitleData.Count);
             GameTwoID = UnityEngine.Random.Range(0, ProductDataManager.TitleData.Count);
             GameThreeID = UnityEngine.Random.Range(0, ProductDataManager.TitleData.Count);
+            active = false;
             OpenGamesUI();
         }
     }
@@ -64,7 +65,6 @@ public class RestockPC : MonoBehaviour, Interactable
         BuyMenuUI.SetActive(true);
         Cursor.lockState = CursorLockMode.Confined;
         Cursor.visible = true;
-        inDialog = Time.timeScale == 0.00001f;
         Time.timeScale = 0.00001f;//freezes time in game
         
     }
@@ -75,6 +75,7 @@ public class RestockPC : MonoBehaviour, Interactable
         switch (ID) {
             case 1:
                 ToStock = GameOneID;
+                
                 break;
             case 2:
                 ToStock = GameTwoID;
@@ -83,31 +84,33 @@ public class RestockPC : MonoBehaviour, Interactable
                 ToStock = GameThreeID;
                 break;
         }
+        Debug.Log(ToStock);
         ShelfMenuUI.SetActive(true);
     }
 
     public void PlaceInShelf(GameObject Shelf){
         Shelf.GetComponent<ShelvesBehavior>().stockGame(1);
-
+        resumeGame();
     }
 
 
     public void Cancel() {
         resumeGame();
     }
+
     public bool IsCurrentlyInteractable()
     {
-        return true;
+        return active;
     }
 
     public void resumeGame() {
-        if (!inDialog)
-        {
-            Cursor.lockState = CursorLockMode.Locked;
-            Cursor.visible = false;
-            Time.timeScale = 1f;
-        }
         BuyMenuUI.SetActive(false);
+        ShelfMenuUI.SetActive(false);
+
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+        Time.timeScale = 1f;
+        active = true;
     }
 
 }
