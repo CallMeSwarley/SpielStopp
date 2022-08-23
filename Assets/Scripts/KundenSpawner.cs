@@ -36,6 +36,6 @@ public class KundenSpawner : MonoBehaviour
     void nextSpawnIn()
     {
         float i = Display_UI.zufriedenheitsWert;
-        spawnCoolDown = 5 + i;
+        spawnCoolDown = 75 - (i / 2)-20;
     }
 }
