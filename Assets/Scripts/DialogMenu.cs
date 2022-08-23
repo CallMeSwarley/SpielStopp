@@ -3,6 +3,7 @@ using UnityEngine.UI;
 using System;
 using Ink.Runtime;
 using UnityEditor;
+using System.IO;
 
 // This is a super bare bones example of how to play and display a ink story in Unity.
 public class DialogMenu : MonoBehaviour
@@ -23,7 +24,7 @@ public class DialogMenu : MonoBehaviour
         if (story == null)//default dialog
         {
 			Debug.Log("Couldn't find dialog -> using default");
-			TextAsset ta = (TextAsset)AssetDatabase.LoadAssetAtPath("Assets/Dialoge/justLookingDialogue.json", typeof(TextAsset));
+			TextAsset ta = JsonUtility.FromJson<TextAsset>("/justLookingDialogue.json");
 			this.story = new Story(ta.text);
 		}
 		RemoveChildren();
@@ -40,7 +41,7 @@ public class DialogMenu : MonoBehaviour
 		if (story == null)//default dialog
 		{
 			Debug.Log("Couldn't find dialog -> using default");
-			TextAsset ta = (TextAsset)AssetDatabase.LoadAssetAtPath("Assets/Dialoge/justLookingDialogue.json", typeof(TextAsset));
+			TextAsset ta = JsonUtility.FromJson<TextAsset>("/justLookingDialogue.json");
 			this.story = new Story(ta.text);
 		}
 		RemoveChildren();

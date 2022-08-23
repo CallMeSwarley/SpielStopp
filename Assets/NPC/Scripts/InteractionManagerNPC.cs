@@ -47,19 +47,19 @@ public class InteractionManagerNPC : MonoBehaviour, Interactable
             cashRegister.interactionManagerNPC = this;
             if (npc_master.currentState == NPC_master.state.justLooking)
             {
-                story = createStory("Assets/Dialoge/justLookingDialogue.json");
+                story = createStory("/justLookingDialogue.json");
                 startDialog(story);
 
             }
             else if (npc_master.currentState == NPC_master.state.searchingForSth)
             {
-                story = createStory("Assets/Dialoge/helpMeLook.json");
+                story = createStory("/helpMeLook.json");
                 story.variablesState["lookingFor"] = ProductDataManager.TitleData[npc_master.wantedGameId];
                 startDialog(story, npc_master.onClickFollow);
             }
             else if (npc_master.currentState == NPC_master.state.wantToBuy)
             {
-                story = createStory("Assets/Dialoge/buyGame.json");
+                story = createStory("/buyGame.json");
                 story.variablesState["GameTitle"] = ProductDataManager.TitleData[npc_master.wantedGameId];
                 startDialog(story, cashRegister.sellGame);
                 //cashRegister.sellGame();
@@ -68,7 +68,7 @@ public class InteractionManagerNPC : MonoBehaviour, Interactable
             }
             else if (npc_master.currentState == NPC_master.state.wantToSell)
             {
-                story = createStory("Assets/Dialoge/sellGame.json");
+                story = createStory("/sellGame.json");
                 int randomGameID = UnityEngine.Random.Range(0, ProductDataManager.TitleData.Count - 1);
                 story.variablesState["GameToSell"] = ProductDataManager.TitleData[randomGameID];
                 int preis = (ProductDataManager.TrendData[randomGameID] + ProductDataManager.RatingData[randomGameID]) * UnityEngine.Random.Range(2, 5);
@@ -85,14 +85,14 @@ public class InteractionManagerNPC : MonoBehaviour, Interactable
     }
     Story createStory(String path)
     {
-        TextAsset textAsset = (TextAsset)AssetDatabase.LoadAssetAtPath(path, typeof(TextAsset));
+        TextAsset textAsset = Resources.Load<TextAsset>(path);
         if (textAsset!=null)
         {
             return new Story(textAsset.text);
         }
         else
         {
-            Debug.Log("Couldnt find story at this path: "+path);
+            Debug.Log("Couldnt find story at this path: "+ path);
             return null;
         }        
     }
