@@ -24,7 +24,7 @@ public class DialogMenu : MonoBehaviour
         if (story == null)//default dialog
         {
 			Debug.Log("Couldn't find dialog -> using default");
-			TextAsset ta = JsonUtility.FromJson<TextAsset>("/justLookingDialogue.json");
+			TextAsset ta = Resources.Load<TextAsset>("justLookingDialogue");
 			this.story = new Story(ta.text);
 		}
 		RemoveChildren();
@@ -41,7 +41,7 @@ public class DialogMenu : MonoBehaviour
 		if (story == null)//default dialog
 		{
 			Debug.Log("Couldn't find dialog -> using default");
-			TextAsset ta = JsonUtility.FromJson<TextAsset>("/justLookingDialogue.json");
+			TextAsset ta = Resources.Load<TextAsset>("justLookingDialogue");
 			this.story = new Story(ta.text);
 		}
 		RemoveChildren();

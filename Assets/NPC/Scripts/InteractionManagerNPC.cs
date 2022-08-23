@@ -47,19 +47,20 @@ public class InteractionManagerNPC : MonoBehaviour, Interactable
             cashRegister.interactionManagerNPC = this;
             if (npc_master.currentState == NPC_master.state.justLooking)
             {
-                story = createStory("/justLookingDialogue.json");
+
+                story = createStory("justLookingDialogue");
                 startDialog(story);
 
             }
             else if (npc_master.currentState == NPC_master.state.searchingForSth)
             {
-                story = createStory("/helpMeLook.json");
+                story = createStory("helpMeLook");
                 story.variablesState["lookingFor"] = ProductDataManager.TitleData[npc_master.wantedGameId];
                 startDialog(story, npc_master.onClickFollow);
             }
             else if (npc_master.currentState == NPC_master.state.wantToBuy)
             {
-                story = createStory("/buyGame.json");
+                story = createStory("buyGame");
                 story.variablesState["GameTitle"] = ProductDataManager.TitleData[npc_master.wantedGameId];
                 startDialog(story, cashRegister.sellGame);
                 //cashRegister.sellGame();
@@ -68,7 +69,7 @@ public class InteractionManagerNPC : MonoBehaviour, Interactable
             }
             else if (npc_master.currentState == NPC_master.state.wantToSell)
             {
-                story = createStory("/sellGame.json");
+                story = createStory("sellGame");
                 int randomGameID = UnityEngine.Random.Range(0, ProductDataManager.TitleData.Count - 1);
                 story.variablesState["GameToSell"] = ProductDataManager.TitleData[randomGameID];
                 int preis = (ProductDataManager.TrendData[randomGameID] + ProductDataManager.RatingData[randomGameID]) * UnityEngine.Random.Range(2, 5);
